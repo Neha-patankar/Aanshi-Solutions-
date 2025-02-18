@@ -1,141 +1,129 @@
-"use client"
-import React, { useState, useRef, useEffect } from 'react';
-import { X, Eye, EyeOff } from 'lucide-react';
+"use client";
 
-const Login = ({ isOpen, onClose }) => {
-  const [showPassword, setShowPassword] = useState(false);
+import { useState } from "react";
+import { X } from "lucide-react";
+import Image from "next/image";
+import logo from "../../../../public/ayushnirmatalogo.png";
+import header from "../../../../public/ayushsiteheader.png";
+
+const Login = () => {
+  const [isOtpSent, setIsOtpSent] = useState(false);
   const [formData, setFormData] = useState({
-    mobile: '',
-    password: ''
+    mobile: "",
+    otp: "",
   });
-  const modalRef = useRef(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        onClose();
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [onClose]);
-
-  const handleSubmit = async (e) => {
+  const handleSendOtp = (e) => {
     e.preventDefault();
-    // Add your login logic here
-    console.log('Form submitted:', formData);
-    // You can add your own success handling here
-    onClose();
+    // Here you would implement your OTP sending logic
+    console.log("Sending OTP to:", formData.mobile);
+    setIsOtpSent(true);
   };
 
-  if (!isOpen) return null;
+  const handleVerifyOtp = (e) => {
+    e.preventDefault();
+    // Here you would implement your OTP verification logic
+    console.log("Verifying OTP:", formData.otp);
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
-      <div ref={modalRef} className="bg-[#F8F0EE] p-5 rounded-2xl shadow-lg w-full max-w-3xl">
-        <div className="flex flex-col md:flex-row">
-          {/* Left Section - Image */}
-          <div className="w-full md:w-1/2 p-0 relative">
-            <h2 className="text-gray-800 text-sm font-bold hidden md:block mb-4">
-              Brandsmashers Academy
-            </h2>
-            <div className="flex items-center justify-center h-[100px] sm:h-[200px] md:h-[250px]">
-              <img
-                src="/LoginImage.svg"
-                alt="Login"
-                className="w-36 sm:w-48 md:w-56"
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center">
+      <div className="bg-white p-0 rounded-lg shadow-xl w-[90%] sm:w-[400px] relative">
+        {/* Header */}
+        <div className="relative mb-6">
+          <h1 className="text-2xl text-center font-bold text-[#000957] mt-4">
+            Login
+          </h1>
+          <button
+            onClick={() => window.history.back()}
+            className="absolute -top-0 -right-0 p-2 rounded-full hover:bg-gray-100 transition-colors"
+          >
+            <X className="w-6 h-6 text-red hover:text-[#000957]" />
+          </button>
+        </div>
+
+        {/* Logo and header images with border */}
+        <div className="flex justify-center mb-4 gap-6 border-b-4 border-[#000957] pb-4">
+          <Image
+            src={logo}
+            alt="logo"
+            width={80}
+            height={80}
+            className="object-contain"
+          />
+          <Image
+            src={header}
+            alt="header"
+            width={180}
+            height={180}
+            className="object-contain"
+          />
+        </div>
+
+        {/* Form */}
+        <form onSubmit={isOtpSent ? handleVerifyOtp : handleSendOtp} className="p-6">
+          {/* Mobile Input */}
+          <div className="mb-6 ">
+            <label className="block text-gray-700 font-semibold mb-2">
+              Mobile Number
+            </label>
+            <input
+              type="tel"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#000957] focus:border-[#000957] outline-none transition-all"
+              placeholder="Enter your mobile number"
+              required
+              disabled={isOtpSent}
+            />
+          </div>
+
+          {/* OTP Input - Only shown after OTP is sent */}
+          {isOtpSent && (
+            <div className="mb-6">
+              <label className="block text-gray-700 font-semibold mb-2">
+                Enter OTP
+              </label>
+              <input
+                type="text"
+                name="otp"
+                value={formData.otp}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#000957] focus:border-[#000957] outline-none transition-all"
+                placeholder="Enter OTP"
+                required
+                maxLength="6"
               />
             </div>
-          </div>
+          )}
 
-          {/* Right Section - Form */}
-          <div className="w-full md:w-1/2 p-0 relative">
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-[#000957] hover:bg-[#000957] text-white font-bold py-3 px-4 rounded-lg transition-colors"
+          >
+            {isOtpSent ? "Verify OTP" : "Send OTP"}
+          </button>
+
+          {/* Resend OTP button */}
+          {isOtpSent && (
             <button
-              onClick={onClose}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              type="button"
+              onClick={handleSendOtp}
+              className="w-full mt-4 text-[#000957] hover:text-[#000957] font-semibold"
             >
-              <X className="h-6 w-6" />
+              Resend OTP
             </button>
-
-            <div className="max-w-sm">
-              <h2 className="text-xl md:text-2xl font-bold mb-6 text-gray-800">
-                Login to Your Account
-              </h2>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Mobile Number Field */}
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1">
-                    Mobile no.
-                  </label>
-                  <div className="flex">
-                    <span className="inline-flex items-center px-3 py-2 bg-[#FFE3DE] border border-r-0 border-[#F8F0EE] rounded-l-lg text-gray-500">
-                      +91
-                    </span>
-                    <input
-                      type="tel"
-                      value={formData.mobile}
-                      onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                      className="w-full px-4 py-2 bg-[#FFE3DE] border border-[#F8F0EE] rounded-r-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none"
-                      placeholder="Enter mobile number"
-                    />
-                  </div>
-                </div>
-
-                {/* Password Field */}
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-1">
-                    Password
-                  </label>
-                  <div className="relative">
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      value={formData.password}
-                      onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                      className="w-full px-4 py-2 bg-[#FFE3DE] border border-[#F8F0EE] rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none pr-10"
-                      placeholder="Enter password"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2"
-                    >
-                      {showPassword ? (
-                        <EyeOff className="h-5 w-5 text-gray-500" />
-                      ) : (
-                        <Eye className="h-5 w-5 text-gray-500" />
-                      )}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Forgot Password Link */}
-                <div className="text-right">
-                  <a href="#" className="text-sm text-red-500 hover:text-red-600">
-                    Forgot Password?
-                  </a>
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="w-full bg-red-500 text-white text-md py-2 px-4 rounded-lg hover:bg-red-600 transition-colors"
-                >
-                  Login
-                </button>
-
-                {/* Sign Up Link */}
-                <p className="text-center text-sm text-gray-600">
-                  Don't have an account?{' '}
-                  <a href="#" className="text-red-500 hover:text-red-600 font-medium">
-                    Sign Up
-                  </a>
-                </p>
-              </form>
-            </div>
-          </div>
-        </div>
+          )}
+        </form>
       </div>
     </div>
   );

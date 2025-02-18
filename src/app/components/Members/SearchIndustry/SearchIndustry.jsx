@@ -2,10 +2,9 @@
 import React, { useState, useEffect } from "react";
 import Input from "./Input";
 import { Dialog } from "@headlessui/react";
-import { initialData } from "./Data";
-import { MapPin, Phone, Mail, Globe, Building } from "lucide-react";
+import { currentData } from "./Data";
+import { MapPin } from "lucide-react";
 import Image from "next/image";
-import logo1 from "../../../../../public/companyLogo/logo1.png";
 import CompanyDetailsDialog from "./CompanyDetailsDialog ";
 
 const SearchIndustry = () => {
@@ -15,13 +14,14 @@ const SearchIndustry = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [filteredData, setFilteredData] = useState(initialData);
+  const [filteredData, setFilteredData] = useState(currentData); // Changed from initialData to currentData
   const [locationCounts, setLocationCounts] = useState({});
 
   const ITEMS_PER_PAGE = 9;
 
   const handleSearch = () => {
-    const filtered = initialData.filter((item) => {
+    const filtered = currentData.filter((item) => {
+      // Changed from initialData to currentData
       if (!companySearch && !productSearch && !areaSearch) {
         return true;
       }
@@ -68,17 +68,11 @@ const SearchIndustry = () => {
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
-  const currentData = filteredData.slice(startIndex, endIndex);
+  const paginatedData = filteredData.slice(startIndex, endIndex); // Renamed from currentData to avoid confusion
 
   const getPageNumbers = () => {
-    const pageNumbers = [];
-    const showPages = 5;
-    let startPage = Math.max(1, currentPage - 2);
-    let endPage = Math.min(totalPages, startPage + showPages - 1);
-    if (endPage - startPage + 1 < showPages) {
-      startPage = Math.max(1, endPage - showPages + 1);
-    }
-    for (let i = startPage; i <= endPage; i++) {
+    let pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(i);
     }
     return pageNumbers;
@@ -86,15 +80,40 @@ const SearchIndustry = () => {
 
   return (
     <div className="p-4">
+      <div className="flex-col md:flex-row bg-white rounded-lg shadow-lg mb-8 gap-4 ">
+        {/* Total Count Card */}
+        <div className="bg-[#000957] rounded-t-md">
+          <h4 className="font-semibold text-lg text-white text-center font-bold p-1">
+            TOTAL COMPANIES : {filteredData.length}
+          </h4>
+        </div>
+
+        {/* Location Count Card */}
+        <div className="bg-[#f5f7f9] p-4 rounded-lg shadow-md">
+          <h4 className="font-semibold text-2xl text-black mb-2">
+            Location Counts:
+          </h4>
+          <ul className="list-disc pl-5 flex flex-col md:flex-row gap-6 text-black font-bold">
+            {Object.keys(locationCounts).map((location, index) => (
+              <li key={index} className="text-black">
+                {location.charAt(0).toUpperCase() + location.slice(1)}:{" "}
+                {locationCounts[location]}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
       {/* Search Section */}
-      <div className="bg-white rounded-xl shadow-lg p-10 mb-8">
-        <div className="flex flex-col md:flex-row items-center gap-4 ">
+      <div className="bg-white rounded-xl shadow-lg p-0 mb-8 border-t-4 border-[#000957]">
+        <div className="bg-[#000957] rounded-t-md pt-2"></div>
+        <div className="flex flex-col md:flex-row items-center gap-4 p-10">
           <Input
             type="text"
             placeholder="Search by Company"
             value={companySearch}
             onChange={(e) => setCompanySearch(e.target.value)}
-            className="w-full"
+            className="w-full "
           />
           <Input
             type="text"
@@ -108,80 +127,68 @@ const SearchIndustry = () => {
             placeholder="Search by Area"
             value={areaSearch}
             onChange={(e) => setAreaSearch(e.target.value)}
-            className="w-full"
+            className="w-full hover:border-[#000957]"
           />
           <button
             onClick={handleSearch}
-            className="w-full md:w-auto bg-[#000957] hover:bg-[#000957] text-white font-medium py-2 px-6 rounded-lg transition-all duration-200"
+            className="w-full md:w-auto bg-[#000957] hover:bg-[#000957] text-white font-bold font-medium py-2 px-6 rounded-lg transition-all duration-200"
           >
             Search
           </button>
         </div>
       </div>
 
-      {/* Location Count */}
-      {/* Location Count */}
-      <div className="mb-4">
-        <h4 className="font-semibold text-lg text-white">Location Counts:</h4>
-        <ul className="lg:flex gap-10 list-disc pl-5">
-          {Object.keys(locationCounts).map((location, index) => (
-            <li key={index} className="text-white">
-              {location.charAt(0).toUpperCase() + location.slice(1)}:{" "}
-              {locationCounts[location]}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Total Count */}
-      <div className="mb-4">
-        <h4 className="font-semibold text-lg text-white">
-          Total Companies: {filteredData.length}
-        </h4>
-      </div>
-
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {currentData.map((item, index) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+        {paginatedData.map((item) => (
           <div
-            key={index}
-            className="w-[400px] h-[200px] rounded-lg shadow-2xl hover:shadow-lg transition-shadow duration-300  bg-white"
+            key={item.id}
+            className="w-full h-auto rounded-lg shadow-2xl hover:shadow-lg hover:scale-110 transition-transform duration-300 bg-white"
           >
             <div className="flex flex-col items-center">
-              <h3 className="text-lg bg-[#000957] font-semibold text-white text-center p-1 rounded-md  w-full">
+              <h3 className="text-lg bg-[#000957] font-semibold text-white text-center p-1 rounded-t-md w-full">
                 {item.company}
               </h3>
 
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-24 h-24 flex-shrink-0 border-4">
+              <div className="flex flex-col sm:flex-row items-center gap-2 w-full">
+                <div className="w-24 h-24 flex-shrink-0 border-4 border-[#000957] rounded-md mx-2">
                   <Image
-                    src={logo1} // Use public folder path here
+                    src={
+                      item.imageLogo.startsWith("/")
+                        ? item.imageLogo
+                        : `/companyLogo/${item.imageLogo}`
+                    }
                     alt={item.company}
-                    className="w-full h-full object-contain"
-                    width={84}
-                    height={84}
+                    className="w-full h-full object-contain rounded-full" // rounded-full for image
+                    width={64}
+                    height={64}
                   />
                 </div>
 
-                <div className="flex flex-col text-left">
-                  <div className="flex items-center text-gray-600">
-                    <MapPin className="w-4 h-4 mr-1" />
-                    <span className="text-sm">{item.address}</span>
+                <div className="flex flex-col font-bold text-left my-4">
+                  <div className="flex items-start text-black text-lg mb-2">
+                    <div className="flex-shrink-0">
+                      <MapPin className="w-5 h-5 mr-1 text-blue-800" />
+                    </div>
+                    <span className="text-sm break-words">{item.address}</span>
                   </div>
-                  <div className="flex items-center text-gray-600 mb-1">
-                    <MapPin className="w-4 h-4 mr-1" />
-                    <span className="text-sm">{item.area}</span>
+
+                  <div className="flex items-start text-black text-md">
+                    <div className="flex-shrink-0">
+                      <MapPin className="w-5 h-5 mr-1 text-blue-800" />
+                    </div>
+                    <span className="text-sm break-words">{item.area}</span>
+                  </div>
+
+                  <div className="mt-5 text-center">
+                    <button
+                      onClick={() => handleViewDetails(item)}
+                      className="px-3 py-1.5 rounded text-white text-sm font-bold bg-[#000957] hover:bg-[#000957] transition-colors duration-200"
+                    >
+                      View Details
+                    </button>
                   </div>
                 </div>
-              </div>
-
-              <div className="flex justify-center ">
-                <button
-                  onClick={() => handleViewDetails(item)}
-                  className="px-4 py-2  rounded text-white bg-[#000957] hover:bg-[#000957] transition-colors duration-200"
-                >
-                  View Details
-                </button>
               </div>
             </div>
           </div>
@@ -190,7 +197,7 @@ const SearchIndustry = () => {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex justify-center items-center space-x-2 mt-8">
+        <div className="flex justify-center font-semibold   items-center space-x-2 mt-8">
           <button
             onClick={() => setCurrentPage(1)}
             disabled={currentPage === 1}
@@ -240,13 +247,17 @@ const SearchIndustry = () => {
       )}
 
       {/* Company Details Dialog */}
-
-      {/* Details Dialog */}
       <CompanyDetailsDialog
         isOpen={isDialogOpen}
         onClose={() => setIsDialogOpen(false)}
         company={selectedItem}
-        logo={logo1}
+        logo={
+          selectedItem?.imageLogo
+            ? selectedItem.imageLogo.startsWith("/")
+              ? selectedItem.imageLogo
+              : `/companyLogo/${selectedItem.imageLogo}`
+            : null
+        }
       />
     </div>
   );

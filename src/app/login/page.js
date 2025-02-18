@@ -6,6 +6,7 @@ import Navbar from '../components/Navbar/Navbar';
   return (
     <div>
      <Navbar/>
+    
      <Login/>
     </div>
   )

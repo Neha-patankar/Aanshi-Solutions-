@@ -1,5 +1,5 @@
 import React from 'react'
-import Member from '../components/Members/Member';
+import Member from '../components/Members/Members/Members';
 import Navbar from '../components/Navbar/Navbar';
 
  const page = () => {

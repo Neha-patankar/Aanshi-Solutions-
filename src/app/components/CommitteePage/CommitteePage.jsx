@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { associationMembers} from './data';
+import { committeeMembers } from './data';
 import Image from "next/image";
 import person1 from '../../../../public/comittee/person1.png'
-import AssociationPage from "./AssociationPage";
+import Comittee from "./Comittee";
 
-const Association = () => {
+const CommitteePage = () => {
   const [clickedIndex, setClickedIndex] = useState(null);
 
   const handleCardClick = (index) => {
@@ -17,11 +17,11 @@ const Association = () => {
 
   return (
     <div className="bg-[#e0e0ddc8]">
-      <AssociationPage/>
+      <Comittee/>
       <div className="container mx-auto py-8 px-4">
-       
+        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Our Committee Members</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {associationMembers.map((member, index) => (
+          {committeeMembers.map((member, index) => (
             <div
               key={index}
               className={`bg-white shadow-lg rounded-lg overflow-hidden p-4 border-t-8 border-[#000957] transition-all transform 
@@ -50,4 +50,4 @@ const Association = () => {
   );
 };
 
-export default Association;
+export default CommitteePage;

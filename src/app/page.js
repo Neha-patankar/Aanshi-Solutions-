@@ -1,10 +1,12 @@
 
-import Navbar from "./components/Navbar/Navbar";
+
+import Landingpage from "./landingpage/page";
 
 export default function Home() {
   return (
     <>
-    <Navbar/>
+ 
+    <Landingpage/>
     </>
   );
 }

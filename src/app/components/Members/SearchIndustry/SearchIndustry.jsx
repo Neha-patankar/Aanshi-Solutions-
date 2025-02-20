@@ -80,7 +80,7 @@ const SearchIndustry = () => {
 
   return (
     <div className="p-4">
-      <div className="flex-col md:flex-row bg-white rounded-lg shadow-lg mb-8 gap-4 ">
+      <div className="flex-col md:flex-row rounded-lg shadow-lg mb-8 gap-4 ">
         {/* Total Count Card */}
         <div className="bg-[#000957] rounded-t-md">
           <h4 className="font-semibold text-lg text-white text-center font-bold p-1">
@@ -89,7 +89,7 @@ const SearchIndustry = () => {
         </div>
 
         {/* Location Count Card */}
-        <div className="bg-[#f5f7f9] p-4 rounded-lg shadow-md">
+        <div className="bg-white p-4 rounded-lg shadow-md">
           <h4 className="font-semibold text-2xl text-black mb-2">
             Location Counts:
           </h4>
@@ -150,8 +150,9 @@ const SearchIndustry = () => {
                 {item.company}
               </h3>
 
-              <div className="flex flex-col sm:flex-row items-center gap-2 w-full">
-                <div className="w-24 h-24 flex-shrink-0 border-4 border-[#000957] rounded-md mx-2">
+              <div className="flex flex-col items-center sm:flex-row sm:items-start gap-4 w-full p-4">
+                {/* Company Logo */}
+                <div className="w-24 h-24 flex-shrink-0 border-4 border-[#000957] rounded-md mx-2 mb-4 sm:mb-0 sm:mr-4">
                   <Image
                     src={
                       item.imageLogo.startsWith("/")
@@ -159,31 +160,31 @@ const SearchIndustry = () => {
                         : `/companyLogo/${item.imageLogo}`
                     }
                     alt={item.company}
-                    className="w-full h-full object-contain rounded-full" // rounded-full for image
+                    className="w-full h-full object-contain rounded-md" // Changed to rounded-md for logo
                     width={64}
                     height={64}
                   />
                 </div>
 
-                <div className="flex flex-col font-bold text-left my-4">
-                  <div className="flex items-start text-black text-lg mb-2">
-                    <div className="flex-shrink-0">
-                      <MapPin className="w-5 h-5 mr-1 text-blue-800" />
-                    </div>
+                {/* Address and Area */}
+                <div className="flex flex-col font-bold text-left text-center sm:text-left">
+                  {/* Location */}
+                  <div className="flex items-center justify-center sm:justify-start text-black text-lg mb-2">
+                    <MapPin className="w-5 h-5 mr-1 text-blue-800" />
                     <span className="text-sm break-words">{item.address}</span>
                   </div>
 
-                  <div className="flex items-start text-black text-md">
-                    <div className="flex-shrink-0">
-                      <MapPin className="w-5 h-5 mr-1 text-blue-800" />
-                    </div>
+                  {/* Area */}
+                  <div className="flex items-center justify-center sm:justify-start text-black text-md">
+                    <MapPin className="w-5 h-5 mr-1 text-blue-800" />
                     <span className="text-sm break-words">{item.area}</span>
                   </div>
 
-                  <div className="mt-5 text-center">
+                  {/* Button */}
+                  <div className="mt-5 text-center sm:text-left">
                     <button
                       onClick={() => handleViewDetails(item)}
-                      className="px-3 py-1.5 rounded text-white text-sm font-bold bg-[#000957] hover:bg-[#000957] transition-colors duration-200"
+                      className="px-3 py-1.5 rounded text-white text-sm font-bold bg-[#000957] hover:bg-[#1a1f71] transition-colors duration-200"
                     >
                       View Details
                     </button>
@@ -197,18 +198,18 @@ const SearchIndustry = () => {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="flex justify-center font-semibold   items-center space-x-2 mt-8">
+        <div className="flex justify-center font-semibold items-center space-x-2 mt-8">
           <button
             onClick={() => setCurrentPage(1)}
             disabled={currentPage === 1}
-            className="px-3 py-1 rounded-lg border-4 border-white disabled:opacity-50 hover:bg-[#000957] hover:text-white"
+            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#000957] hover:text-white text-xs sm:text-sm md:text-base"
           >
             {"<<"}
           </button>
           <button
             onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
             disabled={currentPage === 1}
-            className="px-3 py-1 rounded-lg border-4 border-white disabled:opacity-50 hover:bg-[#000957] hover:text-white"
+            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#000957] hover:text-white text-xs sm:text-sm md:text-base"
           >
             {"<"}
           </button>
@@ -217,7 +218,7 @@ const SearchIndustry = () => {
             <button
               key={pageNum}
               onClick={() => setCurrentPage(pageNum)}
-              className={`px-3 py-1 rounded-lg border-4 border-white ${
+              className={`px-2 py-1 rounded-md border-2 border-white text-xs sm:text-2xl md:text-base ${
                 currentPage === pageNum
                   ? "bg-[#000957] text-white"
                   : "hover:bg-[#000957] hover:text-white"
@@ -232,14 +233,14 @@ const SearchIndustry = () => {
               setCurrentPage((prev) => Math.min(totalPages, prev + 1))
             }
             disabled={currentPage === totalPages}
-            className="px-3 py-1 rounded-lg border-4 border-white disabled:opacity-50 hover:bg-[#000957] hover:text-white"
+            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#000957] hover:text-white text-xs sm:text-sm md:text-base"
           >
             {">"}
           </button>
           <button
             onClick={() => setCurrentPage(totalPages)}
             disabled={currentPage === totalPages}
-            className="px-3 py-1 rounded-lg border-4 border-white disabled:opacity-50 hover:bg-[#000957] hover:text-white"
+            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#000957] hover:text-white text-xs sm:text-sm md:text-base"
           >
             {">>"}
           </button>

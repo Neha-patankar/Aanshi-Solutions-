@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="relative bg-[#000957] text-white py-8">
+    <footer className="relative bg-[#09063b] text-white py-8">
       <div className="absolute inset-0 bg-black/40"></div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -63,7 +63,7 @@ const Footer = () => {
             </p>
             <div className="text-center md:text-right">
               Developed By{' '}
-              <Link href="https://aanshisolutions.com" className="text-red-500 hover:underline">
+              <Link href="https://aanshisolutions.com" className="text-white hover:underline">
                 Aanshi Solutions
               </Link>
             </div>

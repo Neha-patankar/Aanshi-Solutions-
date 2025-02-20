@@ -34,12 +34,12 @@ const StatsSection = () => {
   ];
 
   return (
-    <div className="relative w-full min-h-[300px] overflow-hidden py-16 bg-[#e0e0ddc8]">
+    <div className="relative w-full min-h-[300px] overflow-hidden py-16 ">
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('/scroller/bgstate.png')`,
+          backgroundImage: `url('/scroller/stateSection.png')`,
         }}
       >
         <div className="absolute inset-0 bg-black opacity-30"></div> {/* Overlay for better text contrast */}

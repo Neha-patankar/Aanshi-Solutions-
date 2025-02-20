@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { committeeMembers } from './data';
 import Image from "next/image";
 import person1 from '../../../../public/comittee/person1.png'
-import Comittee from "./Comittee";
+
 
 const CommitteePage = () => {
   const [clickedIndex, setClickedIndex] = useState(null);
@@ -17,14 +17,24 @@ const CommitteePage = () => {
 
   return (
     <div className="bg-[#e0e0ddc8]">
-      <Comittee/>
+       <div
+        className="p-5 lg:px-32 min-h-[300px] flex items-center justify-center min-h-screen"
+        style={{
+          backgroundImage:
+            'url("/companyLogo/gradient.png"), linear-gradient(to right, #5BA353, #FFCC33, #3F6D2A)',
+          backgroundSize: "cover",
+          backgroundBlendMode: "overlay",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
       <div className="container mx-auto py-8 px-4">
         <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Our Committee Members</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {committeeMembers.map((member, index) => (
             <div
               key={index}
-              className={`bg-white shadow-lg rounded-lg overflow-hidden p-4 border-t-8 border-[#000957] transition-all transform 
+              className={`bg-white shadow-lg rounded-lg overflow-hidden p-4 border-t-8 border-[#2e8220] transition-all transform 
               ${clickedIndex === index ? "scale-105" : "hover:scale-105"} 
               hover:shadow-2xl cursor-pointer ${clickedIndex === index ? "animate-bounce" : ""}`}
               onClick={() => handleCardClick(index)}
@@ -47,6 +57,8 @@ const CommitteePage = () => {
         </div>
       </div>
     </div>
+    </div>
+   
   );
 };
 

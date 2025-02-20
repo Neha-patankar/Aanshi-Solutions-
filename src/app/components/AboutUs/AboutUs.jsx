@@ -1,14 +1,24 @@
 import React from "react";
-import AboutPage from "./AboutPage";
+
 
 const AboutUs = () => {
   return (
     <div>
       {/* Top Section with AboutPage */}
-      <AboutPage />
-
+    
+      <div
+        className="p-5 lg:px-32 min-h-[300px] flex items-center justify-center min-h-screen"
+        style={{
+          backgroundImage:
+            'url("/companyLogo/gradient.png"), linear-gradient(to right, #5BA353, #FFCC33, #3F6D2A)',
+          backgroundSize: "cover",
+          backgroundBlendMode: "overlay",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
       {/* Main content of About Us */}
-      <div className="flex items-center justify-center min-h-screen bg-[#e0e0ddc8]">
+      <div className="flex items-center justify-center min-h-screen ">
         <div className="bg-white p-6 rounded-lg shadow-lg max-w-5xl w-full">
           {/* About Us Section */}
           <section className="text-start mb-2">
@@ -67,6 +77,7 @@ const AboutUs = () => {
           </section>
         </div>
       </div>
+    </div>
     </div>
   );
 };

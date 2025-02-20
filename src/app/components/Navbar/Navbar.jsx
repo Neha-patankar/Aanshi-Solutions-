@@ -52,7 +52,7 @@ const Navbar = () => {
         </nav>
 
         {/* Red Navigation Bar */}
-        <div className="bg-gray-500 w-full">
+        <div className="bg-[#e09c25] w-full">
           <div className="container mx-auto px-4">
             {/* Desktop Menu */}
             <div className="hidden md:flex justify-center items-center h-12">

@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div>
+    <div className="sm:-mt-14">
       {/* Top Section with AboutPage */}
     
       <div

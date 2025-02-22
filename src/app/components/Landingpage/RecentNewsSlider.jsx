@@ -1,98 +1,136 @@
 "use client"
-import React, { useState, useEffect } from 'react';
-import { ChevronUp, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const RecentNewsSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const slideRef = useRef(null);
 
   const news = [
     {
       id: 1,
-      title: "Industry Growth Report 2024",
+      title: "Traditional Herbs Guide",
       date: "20 Feb 2024",
-      description: "Latest ceramic industry growth statistics and market analysis released."
+      description: "Comprehensive guide on medicinal properties of traditional Ayurvedic herbs released."
     },
     {
       id: 2,
-      title: "New Export Guidelines",
+      title: "Wellness Conference",
       date: "18 Feb 2024",
-      description: "Updated export guidelines for ceramic manufacturers announced."
+      description: "International Ayurvedic wellness conference announced for next month."
     },
     {
       id: 3,
-      title: "Sustainability Initiative",
+      title: "Research Breakthrough",
       date: "15 Feb 2024",
-      description: "Green manufacturing practices implementation across the sector."
+      description: "New study validates traditional Ayurvedic treatment methods for chronic conditions."
     },
     {
       id: 4,
-      title: "Technology Workshop",
+      title: "Certification Program",
       date: "12 Feb 2024",
-      description: "Advanced manufacturing technology workshop scheduled next month."
+      description: "Advanced Ayurvedic practitioner certification program launches online."
     }
   ];
 
+  // Create a circular array by duplicating the first item at the end
+  const extendedNews = [...news, news[0]];
+
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
-        prevIndex === news.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 2000);
+      handleNext();
+    }, 8000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [currentIndex]);
+
+  const handleTransitionEnd = () => {
+    if (currentIndex === news.length) {
+      setIsTransitioning(false);
+      setCurrentIndex(0);
+    }
+  };
 
   const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? news.length - 1 : prevIndex - 1
-    );
+    setIsTransitioning(true);
+    if (currentIndex === 0) {
+      setCurrentIndex(news.length - 1);
+    } else {
+      setCurrentIndex(currentIndex - 1);
+    }
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === news.length - 1 ? 0 : prevIndex + 1
-    );
+    setIsTransitioning(true);
+    setCurrentIndex(currentIndex + 1);
+    if (currentIndex === news.length - 1) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(0);
+      }, 4000);
+    }
   };
 
   return (
-    <div className="bg-blue-100 rounded-lg shadow-lg p-2 max-w-md">
+    <div className=" p-4 w-full ">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-bold text-gray-800">Recent News</h2>
+        <h2 className="text-2xl font-bold text-green-800">Ayurvedic News</h2>
         <div className="flex gap-2">
           <button 
             onClick={handlePrevious}
-            className="p-1 rounded-full hover:bg-gray-100"
+            className="p-2 rounded-full hover:bg-green-100 transition-colors"
           >
-            <ChevronUp className="w-5 h-5 text-gray-600" />
+            <ChevronLeft className="w-5 h-5 text-green-600" />
           </button>
           <button 
             onClick={handleNext}
-            className="p-1 rounded-full hover:bg-gray-100"
+            className="p-2 rounded-full hover:bg-green-100 transition-colors"
           >
-            <ChevronDown className="w-5 h-5 text-gray-600" />
+            <ChevronRight className="w-5 h-5 text-green-600" />
           </button>
         </div>
       </div>
       
-      <div className="relative overflow-hidden h-64">
+      <div className="relative overflow-hidden h-48">
         <div 
-          className="transition-transform duration-500"
-          style={{ transform: `translateY(-${currentIndex * 100}%)` }}
+          ref={slideRef}
+          className="flex transition-transform duration-500 h-full"
+          style={{ 
+            transform: `translateX(-${currentIndex * 100}%)`,
+            transition: isTransitioning ? 'transform 500ms ease-in-out' : 'none'
+          }}
+          onTransitionEnd={handleTransitionEnd}
         >
-          {news.map((item) => (
+          {extendedNews.map((item, index) => (
             <div 
-              key={item.id} 
-              className="p-4 border-b border-gray-200 h-64"
+              key={`${item.id}-${index}`}
+              className="flex-shrink-0 w-full p-4 border-l border-green-200"
             >
-              <div className="mb-2 text-sm text-gray-500">{item.date}</div>
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">
+              <div className="mb-2 text-sm text-green-600">{item.date}</div>
+              <h3 className="text-xl font-semibold mb-2 text-green-800">
                 {item.title}
               </h3>
-              <p className="text-gray-600">{item.description}</p>
+              <p className="text-green-700">{item.description}</p>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Slide indicators */}
+      {/* <div className="flex justify-center gap-2 mt-4">
+        {news.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 rounded-full transition-colors ${
+              index === (currentIndex === news.length ? 0 : currentIndex)
+                ? 'bg-green-600'
+                : 'bg-green-200'
+            }`}
+            onClick={() => setCurrentIndex(index)}
+          />
+        ))}
+      </div> */}
     </div>
   );
 };

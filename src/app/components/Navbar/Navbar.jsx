@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-[#2e8220]  shadow-md">
         {/* Top Navigation Bar */}
         <nav className="w-full">
           <div className="container flex items-center justify-center mx-auto px-4">
@@ -52,10 +52,10 @@ const Navbar = () => {
         </nav>
 
         {/* Red Navigation Bar */}
-        <div className="bg-[#e09c25] w-full">
+        <div className="bg-[#eea527] w-full">
           <div className="container mx-auto px-4">
             {/* Desktop Menu */}
-            <div className="hidden md:flex justify-center items-center h-12">
+            <div className="hidden md:flex justify-center items-center h-12 font-bold">
               <Link
                 href="/"
                 className="text-white px-4 hover:bg-red-500 h-full flex items-center"

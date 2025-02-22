@@ -5,79 +5,73 @@ import Image from "next/image";
 const ContactUs = () => {
   const contactInfo = [
     {
-      icon: <MapPin className="w-12 h-12 text-[#2e8220] " />,
+      icon: <MapPin className="w-12 h-12 text-[#2e8220]" />,
       title: "Address",
-      content:
-        "First Floor, 1-Real Plaza, 8-A National Highway, Morbi-363642, Gujarat(INDIA)",
+      content: "123, Industrial Area, Indore(M.P.) - 452001",
     },
     {
-      icon: <Mail className="w-12 h-12 text-[#2e8220] " />,
+      icon: <Mail className="w-12 h-12 text-[#2e8220]" />,
       title: "Mail Us",
       content: "morbiceraasso@yahoo.com",
     },
     {
-      icon: <Phone className="w-12 h-12 text-[#2e8220] " />,
+      icon: <Phone className="w-12 h-12 text-[#2e8220]" />,
       title: "Call Us",
       content: "+91 7600010255",
     },
   ];
 
   return (
-    <div>
-      {/* Hero Section */}
+    <div className="w-full  -mt-20"> {/* Added -mt-4 and bg-white */}
+      {/* Hero Section - Removed default padding at top */}
       <div
-        className="p-5 lg:px-32 min-h-[300px] flex items-center justify-center min-h-screen"
+        className="w-full"
         style={{
-          backgroundImage:
-            'url("/companyLogo/gradient.png"), linear-gradient(to right, #5BA353, #FFCC33, #3F6D2A)',
+          backgroundImage: 'url("/companyLogo/gradient.png"), linear-gradient(to right, #5BA353, #FFCC33, #3F6D2A)',
           backgroundSize: "cover",
           backgroundBlendMode: "overlay",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       >
-       
-    
+        <div className="max-w-6xl mx-auto px-4 py-8"> {/* Adjusted padding */}
+          {/* Header Section */}
+          <div className="text-center mb-8"> {/* Reduced margin */}
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              Get In Touch With Us
+            </h2>
+          </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-10">
-        {/* Header Section */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mt-4">
-            Get In Touch With Us
-          </h2>
-        </div>
+          {/* Contact Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"> {/* Adjusted gap and margin */}
+            {contactInfo.map((info, index) => (
+              <div
+                key={index}
+                className="p-6 border border-gray-200 rounded-lg 
+                  border-t-8 border-t-[#2e8220] hover:border-4 hover:border-[#2e8220] 
+                  transition-all duration-300 ease-in-out hover:-translate-y-1 text-center bg-white"
+              >
+                <div className="flex justify-center mb-4">{info.icon}</div>
+                <h2 className="text-xl font-semibold text-black mb-3">
+                  {info.title}
+                </h2>
+                <p className="text-black leading-relaxed">{info.content}</p>
+              </div>
+            ))}
+          </div>
 
-        {/* Contact Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {contactInfo.map((info, index) => (
-            <div
-              key={index}
-              className="p-8 border border-gray-200 rounded-lg 
-                border-t-8 border-t-[#2e8220]  hover:border-4 hover:border-[#2e8220] 
-                transition-all duration-300 ease-in-out hover:-translate-y-1 text-center bg-white"
-            >
-              <div className="flex justify-center mb-6">{info.icon}</div>
-              <h2 className="text-xl font-semibold text-black mb-4">
-                {info.title}
-              </h2>
-              <p className="text-black leading-relaxed">{info.content}</p>
-            </div>
-          ))}
-        </div>
+          {/* Form Section */}
+          <section className="py-8 rounded-lg shadow-md bg-white"> {/* Adjusted padding */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between">
+              <div className="md:w-1/2">
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                  Get in Touch
+                </h2>
+                <p className="mb-6 text-gray-700">
+                  Have questions or want to work together? Feel free to drop us a message.
+                </p>
 
-        {/* Form Section */}
-        <section className="py-12 rounded-lg shadow-md bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between">
-            <div className="md:w-1/2">
-              <h2 className="text-2xl font-bold mb-4 text-gray-800">
-                Get in Touch
-              </h2>
-              <p className="mb-6 text-gray-700">
-                Have questions or want to work together? Feel free to drop us a
-                message.
-              </p>
-
-              <form className="space-y-4 max-w-lg mx-auto">
+                <form className="space-y-4 max-w-lg mx-auto">
                 <div>
                   <label
                     htmlFor="name"
@@ -144,55 +138,51 @@ const ContactUs = () => {
                   Submit
                 </button>
               </form>
-            </div>
-
-            {/* Additional Info Section */}
-            <div className="md:w-1/2 mt-12 md:mt-0 md:ml-8">
-              <div className="flex items-center justify-center space-x-8 mb-10">
-                <Image
-                  src="/ayushnirmatalogo.png"
-                  alt="Ayush Nirmatasangh Logo"
-                  width={100}
-                  height={100}
-                  className="object-contain"
-                />
-                <Image
-                  src="/ayushsiteheader.png"
-                  alt="Logo"
-                  width={180}
-                  height={180}
-                  className="rounded-full object-contain"
-                />
               </div>
 
-              <p className="mb-4">
-                <span className="font-bold text-black">Address:</span> 39,
-                Industrial Area Rau Dist-Indore(M.P)-453331
-              </p>
-              <p className="mb-2">
-                <span className="font-bold text-black">Phone:</span> +9178945612
-              </p>
-              <p className="mb-2">
-                <span className="font-bold text-black">Email:{" "}</span>
-                <a
-                  href="mailto:ayush@gmail.com"
-                  className="text-blue-500 hover:underline"
-                >
-                  ayush@gmail.com
-                </a>
-                ,{" "}
-                <a
-                  href="mailto:ayushnirmata0731@gmail.com"
-                  className="text-blue-500 hover:underline"
-                >
-                  ayushnirmata0731@gmail.com
-                </a>
-              </p>
+              {/* Additional Info Section */}
+              <div className="md:w-1/2 mt-8 md:mt-0 md:ml-8"> {/* Adjusted margin */}
+                <div className="flex items-center justify-center space-x-4 mb-8"> {/* Reduced space between logos */}
+                  <Image
+                    src="/ayushnirmatalogo.png"
+                    alt="Ayush Nirmatasangh Logo"
+                    width={80} // Reduced from 100
+                    height={80} // Reduced from 100
+                    className="object-contain"
+                  />
+                  <Image
+                    src="/ayushsiteheader.png"
+                    alt="Logo"
+                    width={140} // Reduced from 180
+                    height={140} // Reduced from 180
+                    className="rounded-full object-contain"
+                  />
+                </div>
+
+                <div className="px-4"> {/* Added padding for better mobile display */}
+                  <p className="mb-4">
+                    <span className="font-bold text-black">Address:</span> 39,
+                    123, Industrial Area, Indore(M.P.) - 452001
+                  </p>
+                  <p className="mb-2">
+                    <span className="font-bold text-black">Phone:</span> +91 1234567890
+                  </p>
+                  <p className="mb-2">
+                    <span className="font-bold text-black">Email: </span>
+                    <a href="mailto:ayush@gmail.com" className="text-blue-500 hover:underline">
+                      ayush@gmail.com
+                    </a>
+                    ,{" "}
+                    <a href="mailto:ayushnirmata0731@gmail.com" className="text-blue-500 hover:underline">
+                      ayushnirmata0731@gmail.com
+                    </a>
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
-    </div>
     </div>
   );
 };

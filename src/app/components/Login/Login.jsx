@@ -15,14 +15,14 @@ const Login = () => {
 
   const handleSendOtp = (e) => {
     e.preventDefault();
-    // Here you would implement your OTP sending logic
+    // OTP sending logic here
     console.log("Sending OTP to:", formData.mobile);
     setIsOtpSent(true);
   };
 
   const handleVerifyOtp = (e) => {
     e.preventDefault();
-    // Here you would implement your OTP verification logic
+    // OTP verification logic here
     console.log("Verifying OTP:", formData.otp);
   };
 
@@ -38,9 +38,7 @@ const Login = () => {
       <div className="bg-white p-0 rounded-lg shadow-xl w-[90%] sm:w-[400px] relative">
         {/* Header */}
         <div className="relative mb-6">
-          <h1 className="text-2xl text-center font-bold text-[#000957] mt-4">
-            Login
-          </h1>
+         
           <button
             onClick={() => window.history.back()}
             className="absolute -top-0 -right-0 p-2 rounded-full hover:bg-gray-100 transition-colors"
@@ -50,7 +48,7 @@ const Login = () => {
         </div>
 
         {/* Logo and header images with border */}
-        <div className="flex justify-center mb-4 gap-6 border-b-4 border-[#000957] pb-4">
+        <div className="flex justify-center mb-4 -mt-3 gap-8 border-b-4 border-[#2e7d32] pb-4">
           <Image
             src={logo}
             alt="logo"
@@ -65,12 +63,16 @@ const Login = () => {
             height={180}
             className="object-contain"
           />
+          
         </div>
+        <h1 className="text-2xl text-center font-bold text-[#2e7d32] mt-4">
+            Login
+          </h1>
 
         {/* Form */}
         <form onSubmit={isOtpSent ? handleVerifyOtp : handleSendOtp} className="p-6">
           {/* Mobile Input */}
-          <div className="mb-6 ">
+          <div className="mb-6">
             <label className="block text-gray-700 font-semibold mb-2">
               Mobile Number
             </label>
@@ -79,7 +81,7 @@ const Login = () => {
               name="mobile"
               value={formData.mobile}
               onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#000957] focus:border-[#000957] outline-none transition-all"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2e7d32] focus:border-[#2e7d32] outline-none transition-all"
               placeholder="Enter your mobile number"
               required
               disabled={isOtpSent}
@@ -97,7 +99,7 @@ const Login = () => {
                 name="otp"
                 value={formData.otp}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#000957] focus:border-[#000957] outline-none transition-all"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2e7d32] focus:border-[#2e7d32] outline-none transition-all"
                 placeholder="Enter OTP"
                 required
                 maxLength="6"
@@ -108,7 +110,7 @@ const Login = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-[#000957] hover:bg-[#000957] text-white font-bold py-3 px-4 rounded-lg transition-colors"
+            className="w-full bg-[#2e7d32] hover:bg-[#1b5e20] text-white font-bold py-3 px-4 rounded-lg transition-colors"
           >
             {isOtpSent ? "Verify OTP" : "Send OTP"}
           </button>
@@ -118,7 +120,7 @@ const Login = () => {
             <button
               type="button"
               onClick={handleSendOtp}
-              className="w-full mt-4 text-[#000957] hover:text-[#000957] font-semibold"
+              className="w-full mt-4 text-[#2e7d32] hover:text-[#1b5e20] font-semibold"
             >
               Resend OTP
             </button>

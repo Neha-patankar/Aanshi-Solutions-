@@ -104,19 +104,19 @@ const SearchIndustry = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
         {paginatedData.map((item) => (
           <Link
-            key={item.id} // Make sure your data has a unique 'id'
-            href={`/company/${item.id}`} // Template literal for dynamic link
-            target="_blank"
-            rel="noopener noreferrer"
+            key={item.id}
+            href={`/company/${item.id}`} // Correctly route to the company details page with dynamic id
+            target="_blank" // Open link in a new tab
+            rel="noopener noreferrer" // Security best practices
             className="w-full h-auto rounded-lg shadow-2xl hover:shadow-lg hover:scale-110 transition-transform duration-300 bg-white cursor-pointer"
           >
             <div className="flex flex-col items-center">
-              <h3 className="text-lg bg-[#2e8220]  font-semibold text-white text-center p-1 rounded-t-md w-full">
+              <h3 className="text-lg bg-[#2e8220] font-semibold text-white text-center p-1 rounded-t-md w-full">
                 {item.company}
               </h3>
 
               <div className="flex flex-col items-center sm:flex-row sm:items-start gap-4 w-full p-4">
-                <div className="w-24 h-24 flex-shrink-0 border-4 border-[#2e8220]  rounded-md mx-2 mb-4 sm:mb-0 sm:mr-4">
+                <div className="w-24 h-24 flex-shrink-0 border-4 border-[#2e8220] rounded-md mx-2 mb-4 sm:mb-0 sm:mr-4">
                   <Image
                     src={
                       item.imageLogo.startsWith("/")
@@ -142,7 +142,7 @@ const SearchIndustry = () => {
                   </div>
 
                   <div className="mt-5 text-center sm:text-left">
-                    <span className="px-3 py-1.5 rounded text-white text-sm font-bold bg-[#2e8220]  hover:bg-[#2e8220]  transition-colors duration-200">
+                    <span className="px-3 py-1.5 rounded text-white text-sm font-bold bg-[#2e8220] hover:bg-[#2e8220] transition-colors duration-200">
                       View Details
                     </span>
                   </div>
@@ -153,21 +153,19 @@ const SearchIndustry = () => {
         ))}
       </div>
 
-     
-
       {totalPages > 1 && (
         <div className="flex justify-center font-semibold items-center space-x-2 mt-8">
           <button
             onClick={() => setCurrentPage(1)}
             disabled={currentPage === 1}
-            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220]  hover:text-white text-xs sm:text-sm md:text-base"
+            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220] hover:text-white text-xs sm:text-sm md:text-base"
           >
             {"<<"}
           </button>
           <button
             onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
             disabled={currentPage === 1}
-            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220]  hover:text-white text-xs sm:text-sm md:text-base"
+            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220] hover:text-white text-xs sm:text-sm md:text-base"
           >
             {"<"}
           </button>
@@ -178,8 +176,8 @@ const SearchIndustry = () => {
               onClick={() => setCurrentPage(pageNum)}
               className={`px-2 py-1 rounded-md border-2 border-white text-xs sm:text-2xl md:text-base ${
                 currentPage === pageNum
-                  ? "bg-[#2e8220]  text-white"
-                  : "hover:bg-[#2e8220]  hover:text-white"
+                  ? "bg-[#2e8220] text-white"
+                  : "hover:bg-[#2e8220] hover:text-white"
               }`}
             >
               {pageNum}
@@ -191,14 +189,14 @@ const SearchIndustry = () => {
               setCurrentPage((prev) => Math.min(totalPages, prev + 1))
             }
             disabled={currentPage === totalPages}
-            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220]  hover:text-white text-xs sm:text-sm md:text-base"
+            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220] hover:text-white text-xs sm:text-sm md:text-base"
           >
             {">"}
           </button>
           <button
             onClick={() => setCurrentPage(totalPages)}
             disabled={currentPage === totalPages}
-            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220]  hover:text-white text-xs sm:text-sm md:text-base"
+            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220] hover:text-white text-xs sm:text-sm md:text-base"
           >
             {">>"}
           </button>

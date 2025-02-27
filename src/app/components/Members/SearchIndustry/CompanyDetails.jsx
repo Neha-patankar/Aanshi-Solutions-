@@ -351,7 +351,7 @@ const CompanyDetails = ({ company }) => {
                   <p className="text-gray-600">COO</p>
                   <p className="mt-2 text-gray-700">
                     Oversees day-to-day operations and ensures smooth business
-                    processes.
+                    processes
                   </p>
                 </div>
               </div>

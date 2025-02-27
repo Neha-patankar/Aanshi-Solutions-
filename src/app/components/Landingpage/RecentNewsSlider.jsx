@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -73,29 +73,32 @@ const RecentNewsSlider = () => {
   };
 
   return (
-    <div className=" p-4 w-full ">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-bold text-green-800">Ayurvedic News</h2>
+    
+    <div className="w-full pb-5 bg-white border rounded-md shadow-2xl">
+      {/* Title and navigation */}
+      <div className="flex items-center justify-between mb-4 bg-[#cfb02c] py-2 px-4 border-t rounded-md">
+        <h2 className="text-2xl font-bold text-white">Recent News</h2>
         <div className="flex gap-2">
           <button 
             onClick={handlePrevious}
-            className="p-2 rounded-full hover:bg-green-100 transition-colors"
+            className="p-2 rounded-full hover:bg-gray-100 transition-colors"
           >
-            <ChevronLeft className="w-5 h-5 text-green-600" />
+            <ChevronLeft className="w-5 h-5 text-white" />
           </button>
           <button 
             onClick={handleNext}
-            className="p-2 rounded-full hover:bg-green-100 transition-colors"
+            className="p-2 rounded-full hover:bg-gray-100 transition-colors"
           >
-            <ChevronRight className="w-5 h-5 text-green-600" />
+            <ChevronRight className="w-5 h-5 text-white" />
           </button>
         </div>
       </div>
-      
-      <div className="relative overflow-hidden h-48">
+
+      {/* Slider container */}
+      <div className="relative overflow-hidden rounded-lg shadow-sm h-auto">
         <div 
           ref={slideRef}
-          className="flex transition-transform duration-500 h-full"
+          className="flex transition-transform duration-500"
           style={{ 
             transform: `translateX(-${currentIndex * 100}%)`,
             transition: isTransitioning ? 'transform 500ms ease-in-out' : 'none'
@@ -105,32 +108,32 @@ const RecentNewsSlider = () => {
           {extendedNews.map((item, index) => (
             <div 
               key={`${item.id}-${index}`}
-              className="flex-shrink-0 w-full p-4 border-l border-green-200"
+              className="flex-shrink-0 w-full p-4 bg-transparent border-l border-gray-200"
             >
-              <div className="mb-2 text-sm text-green-600">{item.date}</div>
-              <h3 className="text-xl font-semibold mb-2 text-green-800">
+              <div className="mb-2 text-sm text-gray-500 font-medium">{item.date}</div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">
                 {item.title}
               </h3>
-              <p className="text-green-700">{item.description}</p>
+              <p className="text-gray-700">{item.description}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Slide indicators */}
-      {/* <div className="flex justify-center gap-2 mt-4">
+      <div className="flex justify-center gap-2 mt-4">
         {news.map((_, index) => (
           <button
             key={index}
             className={`w-2 h-2 rounded-full transition-colors ${
               index === (currentIndex === news.length ? 0 : currentIndex)
-                ? 'bg-green-600'
-                : 'bg-green-200'
+                ? 'bg-gray-600'
+                : 'bg-gray-200'
             }`}
             onClick={() => setCurrentIndex(index)}
           />
         ))}
-      </div> */}
+      </div>
     </div>
   );
 };

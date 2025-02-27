@@ -5,6 +5,7 @@ import { currentData } from "./Data"; // Assuming you have your data in Data.js
 import { MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { DebounceInput } from 'react-debounce-input'; // Optional for debouncing
 
 const SearchIndustry = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -12,7 +13,11 @@ const SearchIndustry = () => {
   const [filteredData, setFilteredData] = useState(currentData);
   const [locationCounts, setLocationCounts] = useState({});
 
-  const ITEMS_PER_PAGE = 9;
+  const ITEMS_PER_PAGE = 10;
+
+  useEffect(() => {
+    handleSearch();
+  }, [searchTerm]); // Search when the term changes
 
   const handleSearch = () => {
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
@@ -64,7 +69,7 @@ const SearchIndustry = () => {
   return (
     <div className="p-4">
       <div className="flex-col md:flex-row rounded-lg shadow-lg mb-8 gap-4">
-        <div className="bg-[#2e8220]  rounded-t-md">
+        <div className="bg-[#2e8220] rounded-t-md">
           <h4 className="font-semibold text-lg text-white text-center font-bold p-1">
             TOTAL COMPANIES : {filteredData.length}
           </h4>
@@ -86,122 +91,126 @@ const SearchIndustry = () => {
       </div>
 
       <div className="bg-white rounded-xl shadow-lg p-0 mb-8 border-t-4 border-[#2e8220] ">
-        <div className="bg-[#2e8220]  rounded-t-md pt-2"></div>
+        <div className="bg-[#2e8220] rounded-t-md pt-2"></div>
         <div className="flex flex-col md:flex-row items-center gap-4 p-10">
-          <Input
+          <DebounceInput
+            minLength={2}
+            debounceTimeout={300}
+            element={Input}
             type="text"
             placeholder="Search (Company, Product, Area)"
             value={searchTerm}
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-              handleSearch();
-            }}
+            onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full"
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
         {paginatedData.map((item) => (
           <Link
             key={item.id}
-            href={`/company/${item.id}`} // Correctly route to the company details page with dynamic id
-            target="_blank" // Open link in a new tab
-            rel="noopener noreferrer" // Security best practices
-            className="w-full h-auto rounded-lg shadow-2xl hover:shadow-lg hover:scale-110 transition-transform duration-300 bg-white cursor-pointer"
+            href={`/company/${item.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full h-auto rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300 bg-white overflow-hidden border border-gray-100"
           >
-            <div className="flex flex-col items-center">
-              <h3 className="text-lg bg-[#2e8220] font-semibold text-white text-center p-1 rounded-t-md w-full">
-                {item.company}
-              </h3>
+            <div className="flex flex-col items-center relative">
+              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-50 to-blue-100 rounded-bl-full z-0"></div>
 
-              <div className="flex flex-col items-center sm:flex-row sm:items-start gap-4 w-full p-4">
-                <div className="w-24 h-24 flex-shrink-0 border-4 border-[#2e8220] rounded-md mx-2 mb-4 sm:mb-0 sm:mr-4">
-                  <Image
-                    src={
-                      item.imageLogo.startsWith("/")
-                        ? item.imageLogo
-                        : `/companyLogo/${item.imageLogo}` // Template literal here as well
-                    }
-                    alt={item.company}
-                    className="w-full h-full object-contain rounded-md"
-                    width={64}
-                    height={64}
-                  />
+              <div className="absolute top-3 right-3 z-10">
+                <div className="w-8 h-8 bg-white rounded-full shadow flex items-center justify-center">
+                  <span className="block w-4 h-4 border-2 border-gray-400 rounded-sm"></span>
+                </div>
+              </div>
+
+              <div className="absolute top-3 right-10 z-10">
+                <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+              </div>
+
+              <div className="w-full pt-8 pb-4 px-4 flex flex-col items-center">
+                <div className="w-20 h-20 mb-0 relative z-10">
+                  <div className="w-full h-full rounded-full border-2 border-gray-200 overflow-hidden bg-white -mt-3" >
+                    <Image
+                      src={
+                        item.imageLogo.startsWith("/")
+                          ? item.imageLogo
+                          : `/companyLogo/${item.imageLogo}`
+                      }
+                      alt={item.company}
+                      className="w-full h-full object-cover "
+                      width={80}
+                      height={80}
+                    />
+                  </div>
                 </div>
 
-                <div className="flex flex-col font-bold text-left text-center sm:text-left">
-                  <div className="flex items-center justify-center sm:justify-start text-black text-lg mb-2">
-                    <MapPin className="w-5 h-5 mr-1 text-blue-800" />
-                    <span className="text-sm break-words">{item.address}</span>
-                  </div>
+                <h3 className="text-black font-bold text-center mb-1">
+                  {item.company}
+                </h3>
 
-                  <div className="flex items-center justify-center sm:justify-start text-black text-md">
-                    <MapPin className="w-5 h-5 mr-1 text-blue-800" />
-                    <span className="text-sm break-words">{item.area}</span>
-                  </div>
+                <p className="text-gray-600 text-sm text-center mb-1">
+                  <span className="text-black font-bold" >Product : </span>{item.product || "Proprietorship"}
+                </p>
 
-                  <div className="mt-5 text-center sm:text-left">
-                    <span className="px-3 py-1.5 rounded text-white text-sm font-bold bg-[#2e8220] hover:bg-[#2e8220] transition-colors duration-200">
-                      View Details
-                    </span>
-                  </div>
-                </div>
+                <p className="text-gray-500 text-xs text-center">
+                 <span className="text-black font-bold text-md" >Address :</span>  {item.area}
+                </p>
               </div>
             </div>
           </Link>
         ))}
-      </div>
 
-      {totalPages > 1 && (
-        <div className="flex justify-center font-semibold items-center space-x-2 mt-8">
-          <button
-            onClick={() => setCurrentPage(1)}
-            disabled={currentPage === 1}
-            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220] hover:text-white text-xs sm:text-sm md:text-base"
-          >
-            {"<<"}
-          </button>
-          <button
-            onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
-            disabled={currentPage === 1}
-            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220] hover:text-white text-xs sm:text-sm md:text-base"
-          >
-            {"<"}
-          </button>
-
-          {getPageNumbers().map((pageNum) => (
+        {totalPages > 1 && (
+          <div className="flex justify-center font-semibold items-center space-x-2 mt-8">
             <button
-              key={pageNum}
-              onClick={() => setCurrentPage(pageNum)}
-              className={`px-2 py-1 rounded-md border-2 border-white text-xs sm:text-2xl md:text-base ${
-                currentPage === pageNum
-                  ? "bg-[#2e8220] text-white"
-                  : "hover:bg-[#2e8220] hover:text-white"
-              }`}
+              onClick={() => setCurrentPage(1)}
+              disabled={currentPage === 1}
+              className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220] hover:text-white text-xs sm:text-sm md:text-base"
             >
-              {pageNum}
+              {"<<"}
             </button>
-          ))}
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+              disabled={currentPage === 1}
+              className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220] hover:text-white text-xs sm:text-sm md:text-base"
+            >
+              {"<"}
+            </button>
 
-          <button
-            onClick={() =>
-              setCurrentPage((prev) => Math.min(totalPages, prev + 1))
-            }
-            disabled={currentPage === totalPages}
-            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220] hover:text-white text-xs sm:text-sm md:text-base"
-          >
-            {">"}
-          </button>
-          <button
-            onClick={() => setCurrentPage(totalPages)}
-            disabled={currentPage === totalPages}
-            className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220] hover:text-white text-xs sm:text-sm md:text-base"
-          >
-            {">>"}
-          </button>
-        </div>
-      )}
+            {getPageNumbers().map((pageNum) => (
+              <button
+                key={pageNum}
+                onClick={() => setCurrentPage(pageNum)}
+                className={`px-2 py-1 rounded-md border-2 border-white text-xs sm:text-2xl md:text-base ${
+                  currentPage === pageNum
+                    ? "bg-[#2e8220] text-white"
+                    : "hover:bg-[#2e8220] hover:text-white"
+                }`}
+              >
+                {pageNum}
+              </button>
+            ))}
+
+            <button
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+              }
+              disabled={currentPage === totalPages}
+              className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220] hover:text-white text-xs sm:text-sm md:text-base"
+            >
+              {">"}
+            </button>
+            <button
+              onClick={() => setCurrentPage(totalPages)}
+              disabled={currentPage === totalPages}
+              className="px-2 py-1 rounded-md border-2 border-white disabled:opacity-50 hover:bg-[#2e8220] hover:text-white text-xs sm:text-sm md:text-base"
+            >
+              {">>"}
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

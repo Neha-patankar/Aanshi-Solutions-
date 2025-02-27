@@ -71,39 +71,39 @@ const Product = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#e0e0ddc8]">
+    <div className="min-h-screen bg-[#344742]">
       <div className="flex flex-col md:flex-row">
         {/* Sidebar - Always visible */}
-        <div className="w-full md:w-48 lg:w-64 bg-white shadow-lg">
-          <div className="p-4">
-            <h2 className="text-xl font-bold mb-4 text-gray-800">Categories</h2>
+       <div className="w-full md:w-20 lg:w-32 bg-[#968171] shadow-2xl ">
+    <div className="p-4">
+    <h2 className="text-xl font-bold mb-4 text-gray-800 text-center md:text-left">Categories</h2>
 
-            {/* Category List */}
-            <div className="grid grid-cols-3 md:grid-cols-1 gap-3">
-              {categories.map((category) => (
-                <div
-                  key={category.name}
-                  onClick={() => handleCategoryClick(category.name)}
-                  className={`cursor-pointer transition-all ${
-                    selectedCategory === category.name
-                      ? "scale-105 shadow-lg"
-                      : "hover:scale-105"
-                  }`}
-                >
-                  <div className="relative h-24 md:h-28 lg:h-32 w-full rounded-lg overflow-hidden">
-                    <Image
-                      src={category.image}
-                      alt={category.name}
-                      fill
-                      className="object-contain p-2"
-                    />
-                  </div>
-                  <p className="text-center mt-2 text-sm">{category.name}</p>
-                </div>
-              ))}
-            </div>
+    {/* Category List */}
+    <div className="grid grid-cols-3 md:grid-cols-1 gap-3">
+      {categories.map((category) => (
+        <div
+          key={category.name}
+          onClick={() => handleCategoryClick(category.name)}
+          className={`cursor-pointer transition-all flex flex-col items-center md:items-center ${
+            selectedCategory === category.name
+              ? "scale-105 shadow-lg bg-blue-50 rounded-lg"
+              : "hover:scale-105 hover:bg-gray-50 hover:rounded-lg"
+          }`}
+        >
+          <div className="relative h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-lg overflow-hidden">
+            <Image
+              src={category.image}
+              alt={category.name}
+              fill
+              className="object-contain p-1"
+            />
           </div>
+          {/* Category name is commented out as per your example */}
         </div>
+      ))}
+    </div>
+  </div>
+</div>
         
         {/* Main Content */}
         <div className="flex-1 p-4 md:p-6 lg:p-8">

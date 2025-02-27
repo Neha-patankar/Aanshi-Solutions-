@@ -16,28 +16,27 @@ const Landingpage = () => {
       <StatsSection/>
       
       {/* Content Grid Section */}
-      <div className="container  bg-[#e0e0ddc8]">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className='bg-[#344742]  py-10'>
+      <div className="container mx-auto py-0 px-4 md:px-6 w-full ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ">
           {/* Recent Activities Column */}
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Recent Activities</h2>
-            <div className="rounded-lg shadow-md p-6">
+          <div className="h-full">
+            
+            <div className="bg-white rounded-lg shadow-md p-0">
               <RecentActivitiesSlider/>
             </div>
-          
           </div>
 
           {/* Recent News Column */}
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Recent News</h2>
-            <div className=" rounded-lg shadow-md p-6">
+          <div className="h-full">
+           
+            <div className="bg-white rounded-lg shadow-md p-0 ">
               <RecentNewsSlider />
             </div>
-           
           </div>
         </div>
       </div>
-
+      </div>
       <Footer/>
     </div>
   );

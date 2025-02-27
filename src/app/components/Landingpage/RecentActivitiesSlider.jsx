@@ -1,52 +1,41 @@
-"use client"
+"use client";
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Clock, User, CheckCircle, Bell } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const RecentActivitySlider = () => {
+const RecentActivitiesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const slideRef = useRef(null);
 
-  const activities = [
+  const news = [
     {
       id: 1,
-      type: "appointment",
-      title: "New Consultation Scheduled",
-      user: "Dr. Sarah Miller",
-      time: "2 hours ago",
-      status: "Confirmed",
-      description: "Patient consultation for herbal therapy scheduled for tomorrow at 10:00 AM."
+      title: "Traditional Herbs Guide",
+      date: "20 Feb 2024",
+      description: "Comprehensive guide on medicinal properties of traditional Ayurvedic herbs released."
     },
     {
       id: 2,
-      type: "treatment",
-      title: "Treatment Plan Updated",
-      user: "Dr. James Chen",
-      time: "4 hours ago",
-      status: "In Progress",
-      description: "Modified wellness program for chronic condition management based on latest assessment."
+      title: "Wellness Conference",
+      date: "18 Feb 2024",
+      description: "International Ayurvedic wellness conference announced for next month."
     },
     {
       id: 3,
-      type: "notification",
-      title: "Inventory Alert",
-      user: "System",
-      time: "6 hours ago",
-      status: "Action Required",
-      description: "Low stock alert for essential herbs. Please review and reorder supplies."
+      title: "Research Breakthrough",
+      date: "15 Feb 2024",
+      description: "New study validates traditional Ayurvedic treatment methods for chronic conditions."
     },
     {
       id: 4,
-      type: "report",
-      title: "Monthly Report Generated",
-      user: "Analytics System",
-      time: "12 hours ago",
-      status: "Completed",
-      description: "February 2024 patient outcomes and treatment effectiveness report is ready."
+      title: "Certification Program",
+      date: "12 Feb 2024",
+      description: "Advanced Ayurvedic practitioner certification program launches online."
     }
   ];
 
-  const extendedActivities = [...activities, activities[0]];
+  // Create a circular array by duplicating the first item at the end
+  const extendedNews = [...news, news[0]];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -57,7 +46,7 @@ const RecentActivitySlider = () => {
   }, [currentIndex]);
 
   const handleTransitionEnd = () => {
-    if (currentIndex === activities.length) {
+    if (currentIndex === news.length) {
       setIsTransitioning(false);
       setCurrentIndex(0);
     }
@@ -66,7 +55,7 @@ const RecentActivitySlider = () => {
   const handlePrevious = () => {
     setIsTransitioning(true);
     if (currentIndex === 0) {
-      setCurrentIndex(activities.length - 1);
+      setCurrentIndex(news.length - 1);
     } else {
       setCurrentIndex(currentIndex - 1);
     }
@@ -75,7 +64,7 @@ const RecentActivitySlider = () => {
   const handleNext = () => {
     setIsTransitioning(true);
     setCurrentIndex(currentIndex + 1);
-    if (currentIndex === activities.length - 1) {
+    if (currentIndex === news.length - 1) {
       setTimeout(() => {
         setIsTransitioning(false);
         setCurrentIndex(0);
@@ -83,85 +72,70 @@ const RecentActivitySlider = () => {
     }
   };
 
-  const getStatusColor = (status) => {
-    switch (status.toLowerCase()) {
-      case 'confirmed':
-        return 'bg-green-100 text-green-800';
-      case 'in progress':
-        return 'bg-blue-100 text-blue-800';
-      case 'action required':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'completed':
-        return 'bg-purple-100 text-purple-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
-  };
-
   return (
-    <div className="p-4 w-full ">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-bold text-gray-800">Recent Activity</h2>
+    
+    <div className="w-full pb-5 bg-white border rounded-md shadow-2xl">
+      {/* Title and navigation */}
+      <div className="flex items-center justify-between mb-4 bg-[#cfb02c] py-2 px-4 border-t rounded-md">
+        <h2 className="text-2xl font-bold text-white">Recent Activities</h2>
         <div className="flex gap-2">
           <button 
             onClick={handlePrevious}
             className="p-2 rounded-full hover:bg-gray-100 transition-colors"
           >
-            <ChevronLeft className="w-5 h-5 text-gray-600" />
+            <ChevronLeft className="w-5 h-5 text-white" />
           </button>
           <button 
             onClick={handleNext}
             className="p-2 rounded-full hover:bg-gray-100 transition-colors"
           >
-            <ChevronRight className="w-5 h-5 text-gray-600" />
+            <ChevronRight className="w-5 h-5 text-white" />
           </button>
         </div>
       </div>
-      
-      <div className="relative overflow-hidden h-52">
+
+      {/* Slider container */}
+      <div className="relative overflow-hidden rounded-lg shadow-sm h-auto">
         <div 
           ref={slideRef}
-          className="flex transition-transform duration-500 h-full"
+          className="flex transition-transform duration-500"
           style={{ 
             transform: `translateX(-${currentIndex * 100}%)`,
             transition: isTransitioning ? 'transform 500ms ease-in-out' : 'none'
           }}
           onTransitionEnd={handleTransitionEnd}
         >
-          {extendedActivities.map((item, index) => (
+          {extendedNews.map((item, index) => (
             <div 
               key={`${item.id}-${index}`}
-              className="flex-shrink-0 w-full p-4 border rounded-lg shadow-sm bg-white"
+              className="flex-shrink-0 w-full p-4 bg-transparent border-l border-gray-200"
             >
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <User className="w-4 h-4 text-gray-600" />
-                  <span className="text-sm text-gray-600">{item.user}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-gray-400" />
-                  <span className="text-sm text-gray-400">{item.time}</span>
-                </div>
-              </div>
-              
-              <h3 className="text-xl font-semibold mb-2 text-gray-800">
+              <div className="mb-2 text-sm text-gray-500 font-medium">{item.date}</div>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900">
                 {item.title}
               </h3>
-              
-              <p className="text-gray-600 mb-3">{item.description}</p>
-              
-              <div className="flex items-center justify-between">
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(item.status)}`}>
-                  {item.status}
-                </span>
-                <CheckCircle className="w-5 h-5 text-gray-400" />
-              </div>
+              <p className="text-gray-700">{item.description}</p>
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Slide indicators */}
+      <div className="flex justify-center gap-2 mt-4">
+        {news.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 rounded-full transition-colors ${
+              index === (currentIndex === news.length ? 0 : currentIndex)
+                ? 'bg-gray-600'
+                : 'bg-gray-200'
+            }`}
+            onClick={() => setCurrentIndex(index)}
+          />
+        ))}
       </div>
     </div>
   );
 };
 
-export default RecentActivitySlider;
+export default RecentActivitiesSlider;

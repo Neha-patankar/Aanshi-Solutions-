@@ -332,7 +332,7 @@ const CompanyDetails = ({ company }) => {
                   <p className="text-gray-600">CEO</p>
                   <p className="mt-2 text-gray-700">
                     Leading the company's vision and strategy with a focus on
-                    innovation.
+                    innovation
                   </p>
                 </div>
               </div>

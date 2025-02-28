@@ -19,6 +19,7 @@ import {
 import Image from "next/image";
 import Footer from "../../Footer/Footer";
 import HomeCardSlider from "./HomeCardSlider";
+import Product from "../../Product/Product";
 
 // Define smoothScroll function
 const smoothScroll = (id) => {
@@ -179,9 +180,10 @@ const CompanyDetails = ({ company }) => {
             <h2 className="text-2xl md:text-3xl font-bold text-[#2c3e50]">
               Product
             </h2>
-            <div className="text-base md:text-lg font-semibold mt-4">
+            {/* <div className="text-base md:text-lg font-semibold mt-4">
               {company?.product || "Our products and services"}
-            </div>
+            </div> */}
+            <Product/>
           </section>
 
           {/* About Us Section */}

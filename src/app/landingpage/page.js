@@ -16,7 +16,7 @@ const Landingpage = () => {
       <StatsSection/>
       
       {/* Content Grid Section */}
-      <div className='bg-[#344742]  py-10'>
+      <div className='bg-gray-100   py-10'>
       <div className="container mx-auto py-0 px-4 md:px-6 w-full ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 ">
           {/* Recent Activities Column */}

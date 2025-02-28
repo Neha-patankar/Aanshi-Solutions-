@@ -76,7 +76,7 @@ const RecentNewsSlider = () => {
     
     <div className="w-full pb-5 bg-white border rounded-md shadow-2xl">
       {/* Title and navigation */}
-      <div className="flex items-center justify-between mb-4 bg-[#cfb02c] py-2 px-4 border-t rounded-md">
+      <div className="flex items-center justify-between mb-4 bg-[#344742]  py-2 px-4 border-t rounded-md">
         <h2 className="text-2xl font-bold text-white">Recent News</h2>
         <div className="flex gap-2">
           <button 

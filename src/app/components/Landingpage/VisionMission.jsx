@@ -2,8 +2,8 @@ import React from 'react';
 
 const VisionMission = () => {
   return (
-    <div className='bg-[#344742] pt-10'>
-    <div className="py-24 px-4 sm:px-6 lg:px-8 ">
+    <div className='bg-gray-100 '>
+    <div className="py-6 px-4 sm:px-6 lg:px-8 ">
       <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
         {/* Vision Card */}
         <div className="w-80 transform hover:scale-105 transition-transform duration-300">

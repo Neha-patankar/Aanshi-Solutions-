@@ -33,7 +33,7 @@ const Association = () => {
             {associationMembers.map((member, index) => (
               <div
                 key={index}
-                className={`bg-white shadow-lg rounded-lg overflow-hidden p-4 border-t-8 border-[#2e8220] 
+                className={`bg-white shadow-lg rounded-lg overflow-hidden p-4 border-t-8 border-[#344742] 
                 transition-transform transform-gpu 
                 ${clickedIndex === index ? "scale-105" : "hover:scale-105"} 
                 hover:shadow-2xl hover:shadow-black hover:translate-y-2 

@@ -39,7 +39,7 @@ export default function CompanyPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="text-xl font-semibold">Loading...</div>
+        <div className="text-xl font-semibold">Loading....</div>
       </div>
     );
   }

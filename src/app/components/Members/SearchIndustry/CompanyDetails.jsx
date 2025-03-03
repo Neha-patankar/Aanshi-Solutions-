@@ -17,7 +17,7 @@ import {
   X,
 } from "lucide-react";
 import Image from "next/image";
-import Footer from "../../Footer/Footer";
+import Footer from "./Footer";
 import HomeCardSlider from "./HomeCardSlider";
 import Product from "../../Product/Product";
 

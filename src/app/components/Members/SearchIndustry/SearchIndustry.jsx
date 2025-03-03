@@ -5,7 +5,7 @@ import { currentData } from "./Data"; // Assuming you have your data in Data.js
 import { MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { DebounceInput } from 'react-debounce-input'; // Optional for debouncing
+import { DebounceInput } from "react-debounce-input"; // Optional for debouncing
 
 const SearchIndustry = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -69,13 +69,13 @@ const SearchIndustry = () => {
   return (
     <div className="p-4">
       <div className="flex-col md:flex-row rounded-lg shadow-lg mb-8 gap-4">
-        <div className="bg-[#2e8220] rounded-t-md">
+        <div className="bg-[#344742] rounded-t-md">
           <h4 className="font-semibold text-lg text-white text-center font-bold p-1">
             TOTAL COMPANIES : {filteredData.length}
           </h4>
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow-md">
+        <div className="bg-white p-4 rounded-b-lg shadow-md">
           <h4 className="font-semibold text-2xl text-black mb-2">
             Location Counts:
           </h4>
@@ -90,8 +90,8 @@ const SearchIndustry = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-xl shadow-lg p-0 mb-8 border-t-4 border-[#2e8220] ">
-        <div className="bg-[#2e8220] rounded-t-md pt-2"></div>
+      <div className="bg-white rounded-xl shadow-lg p-0 mb-8 border-t-4 border-[#344742] ">
+        <div className="bg-[#344742] rounded-t-md pt-2"></div>
         <div className="flex flex-col md:flex-row items-center gap-4 p-10">
           <DebounceInput
             minLength={2}
@@ -116,7 +116,7 @@ const SearchIndustry = () => {
             className="w-full h-auto rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300 bg-white overflow-hidden border border-gray-100"
           >
             <div className="flex flex-col items-center relative">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-50 to-blue-100 rounded-bl-full z-0"></div>
+              <div className="absolute top-0 right-0 w-20 h-20 bg-[#344742] rounded-bl-full z-0"></div>
 
               <div className="absolute top-3 right-3 z-10">
                 <div className="w-8 h-8 bg-white rounded-full shadow flex items-center justify-center">
@@ -130,7 +130,7 @@ const SearchIndustry = () => {
 
               <div className="w-full pt-8 pb-4 px-4 flex flex-col items-center">
                 <div className="w-20 h-20 mb-0 relative z-10">
-                  <div className="w-full h-full rounded-full border-2 border-gray-200 overflow-hidden bg-white -mt-3" >
+                  <div className="w-full h-full rounded-full border-2 border-gray-200 overflow-hidden bg-white -mt-3">
                     <Image
                       src={
                         item.imageLogo.startsWith("/")
@@ -149,12 +149,9 @@ const SearchIndustry = () => {
                   {item.company}
                 </h3>
 
-                <p className="text-gray-600 text-sm text-center mb-1">
-                  <span className="text-black font-bold" >Product : </span>{item.product || "Proprietorship"}
-                </p>
-
                 <p className="text-gray-500 text-xs text-center">
-                 <span className="text-black font-bold text-md" >Address :</span>  {item.area}
+                  <span className="text-black font-bold text-md">City :</span>{" "}
+                  {item.area}
                 </p>
               </div>
             </div>

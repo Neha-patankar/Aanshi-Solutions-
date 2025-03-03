@@ -28,16 +28,16 @@ const Footer = () => {
             <h3 className="text-2xl font-bold mb-4 text-white">Contact Information</h3>
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-blue-600" />
-                <p>123, Industrial Area, Indore(M.P.) - 452001</p>
+                <MapPin className="w-10 h-10 text-blue-600" />
+                <p> 304/6, Uma Nagar Extension, Indore. Office: Shop No. 1, 4th Floor, Dawa Bazar, Indore</p>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-5 h-5 text-blue-600" />
-                <p>+91 1234567890</p>
+                <p>+91 9826210740</p>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-5 h-5 text-blue-600" />
-                <p>info@ayushnirmatasangh.com</p>
+                <p>m.p.ayush@yahoo.com</p>
               </div>
             </div>
           </div>

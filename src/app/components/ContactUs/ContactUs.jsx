@@ -5,50 +5,59 @@ import Image from "next/image";
 const ContactUs = () => {
   const contactInfo = [
     {
-      icon: <MapPin className="w-12 h-12 text-[#2e8220]" />,
+      icon: <MapPin className="w-12 h-12 text-[#344742]" />,
       title: "Address",
-      content: "123, Industrial Area, Indore(M.P.) - 452001",
+      content:
+        "304/6, Uma Nagar Extension, Indore. Office: Shop No. 1, 4th Floor, Dawa Bazar, Indore - 452001",
     },
     {
-      icon: <Mail className="w-12 h-12 text-[#2e8220]" />,
+      icon: <Mail className="w-12 h-12 text-[#344742] " />,
       title: "Mail Us",
       content: "morbiceraasso@yahoo.com",
     },
     {
-      icon: <Phone className="w-12 h-12 text-[#2e8220]" />,
+      icon: <Phone className="w-12 h-12 text-[#344742] " />,
       title: "Call Us",
       content: "+91 7600010255",
     },
   ];
 
   return (
-    <div className="w-full  -mt-20"> {/* Added -mt-4 and bg-white */}
+    <div className="w-full  -mt-20">
+      {" "}
+      {/* Added -mt-4 and bg-white */}
       {/* Hero Section - Removed default padding at top */}
       <div
         className="w-full"
         style={{
-          backgroundImage: 'url("/companyLogo/gradient.png"), linear-gradient(to right, #5BA353, #FFCC33, #3F6D2A)',
+          backgroundImage:
+            'url("/companyLogo/gradient.png"), linear-gradient(to right, #5BA353, #FFCC33, #3F6D2A)',
           backgroundSize: "cover",
           backgroundBlendMode: "overlay",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="max-w-6xl mx-auto px-4 py-8"> {/* Adjusted padding */}
+        <div className="max-w-6xl mx-auto px-4 py-8">
+          {" "}
+          {/* Adjusted padding */}
           {/* Header Section */}
-          <div className="text-center mb-8"> {/* Reduced margin */}
+          <div className="text-center mb-8">
+            {" "}
+            {/* Reduced margin */}
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
               Get In Touch With Us
             </h2>
           </div>
-
           {/* Contact Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"> {/* Adjusted gap and margin */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {" "}
+            {/* Adjusted gap and margin */}
             {contactInfo.map((info, index) => (
               <div
                 key={index}
                 className="p-6 border border-gray-200 rounded-lg 
-                  border-t-8 border-t-[#2e8220] hover:border-4 hover:border-[#2e8220] 
+                  border-t-8 border-t-[#344742]  hover:border-4 hover:border-[#344742] 
                   transition-all duration-300 ease-in-out hover:-translate-y-1 text-center bg-white"
               >
                 <div className="flex justify-center mb-4">{info.icon}</div>
@@ -59,90 +68,96 @@ const ContactUs = () => {
               </div>
             ))}
           </div>
-
           {/* Form Section */}
-          <section className="py-8 rounded-lg shadow-md bg-white"> {/* Adjusted padding */}
+          <section className="py-8 rounded-lg shadow-md bg-white">
+            {" "}
+            {/* Adjusted padding */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between">
               <div className="md:w-1/2">
                 <h2 className="text-2xl font-bold mb-4 text-gray-800">
                   Get in Touch
                 </h2>
                 <p className="mb-6 text-gray-700">
-                  Have questions or want to work together? Feel free to drop us a message.
+                  Have questions or want to work together? Feel free to drop us
+                  a message.
                 </p>
 
                 <form className="space-y-4 max-w-lg mx-auto">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-lg text-gray-800 font-semibold mb-2"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your name"
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2e8220]  focus:border-transparent transition-shadow"
-                  />
-                </div>
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-lg text-gray-800 font-semibold mb-2"
+                    >
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      placeholder="Enter your name"
+                      className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#344742]   focus:border-transparent transition-shadow"
+                    />
+                  </div>
 
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-lg text-gray-800 font-semibold mb-2"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    placeholder="Enter your email"
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2e8220]  focus:border-transparent transition-shadow"
-                  />
-                </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-lg text-gray-800 font-semibold mb-2"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="Enter your email"
+                      className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#344742]   focus:border-transparent transition-shadow"
+                    />
+                  </div>
 
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-lg text-gray-800 font-semibold mb-2"
-                  >
-                    Subject
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    placeholder="Enter subject"
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2e8220]  focus:border-transparent transition-shadow"
-                  />
-                </div>
+                  <div>
+                    <label
+                      htmlFor="subject"
+                      className="block text-lg text-gray-800 font-semibold mb-2"
+                    >
+                      Subject
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      placeholder="Enter subject"
+                      className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#344742]   focus:border-transparent transition-shadow"
+                    />
+                  </div>
 
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-lg text-gray-800 font-semibold mb-2"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    placeholder="Enter your message"
-                    className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2e8220]  focus:border-transparent transition-shadow h-30"
-                  />
-                </div>
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-lg text-gray-800 font-semibold mb-2"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      placeholder="Enter your message"
+                      className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#344742]   focus:border-transparent transition-shadow h-30"
+                    />
+                  </div>
 
-                <button
-                  type="submit"
-                  className="w-full bg-[#2e8220]  hover:bg-[#2e8220]  text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 ease-in-out shadow-lg"
-                >
-                  Submit
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    className="w-full bg-[#344742]   hover:bg-[#344742]   text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 ease-in-out shadow-lg"
+                  >
+                    Submit
+                  </button>
+                </form>
               </div>
 
               {/* Additional Info Section */}
-              <div className="md:w-1/2 mt-8 md:mt-0 md:ml-8"> {/* Adjusted margin */}
-                <div className="flex items-center justify-center space-x-4 mb-8"> {/* Reduced space between logos */}
+              <div className="md:w-1/2 mt-8 md:mt-0 md:ml-8">
+                {" "}
+                {/* Adjusted margin */}
+                <div className="flex items-center justify-center space-x-4 mb-8">
+                  {" "}
+                  {/* Reduced space between logos */}
                   <Image
                     src="/ayushnirmatalogo.png"
                     alt="Ayush Nirmatasangh Logo"
@@ -158,23 +173,26 @@ const ContactUs = () => {
                     className="rounded-full object-contain"
                   />
                 </div>
-
-                <div className="px-4"> {/* Added padding for better mobile display */}
+                <div className="px-4">
+                  {" "}
+                  {/* Added padding for better mobile display */}
                   <p className="mb-4">
-                    <span className="font-bold text-black">Address:</span> 39,
-                    123, Industrial Area, Indore(M.P.) - 452001
+                    <span className="font-bold text-black">Address:</span>
+                    304/6, Uma Nagar Extension, Indore. Office: Shop No. 1, 4th
+                    Floor, Dawa Bazar, Indore
                   </p>
                   <p className="mb-2">
-                    <span className="font-bold text-black">Phone:</span> +91 1234567890
+                    <span className="font-bold text-black">Phone:</span> +91
+                    9826210740
                   </p>
                   <p className="mb-2">
                     <span className="font-bold text-black">Email: </span>
-                    <a href="mailto:ayush@gmail.com" className="text-blue-500 hover:underline">
-                      ayush@gmail.com
-                    </a>
-                    ,{" "}
-                    <a href="mailto:ayushnirmata0731@gmail.com" className="text-blue-500 hover:underline">
-                      ayushnirmata0731@gmail.com
+
+                    <a
+                      href="mailto: m.p.ayush@yahoo.com"
+                      className="text-blue-500 hover:underline"
+                    >
+                      m.p.ayush@yahoo.com
                     </a>
                   </p>
                 </div>

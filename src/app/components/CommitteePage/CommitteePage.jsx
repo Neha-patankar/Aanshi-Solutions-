@@ -1,70 +1,50 @@
 "use client";
-import React, { useState } from "react";
-import { committeeMembers } from './data';
+import React from "react";
 import Image from "next/image";
-import person1 from '../../../../public/comittee/person1.png';
+import { committeeMembers } from "./data";
 
-const CommitteePage = () => {
-  const [clickedIndex, setClickedIndex] = useState(null);
-
-  const handleCardClick = (index) => {
-    setClickedIndex(index);
-    setTimeout(() => {
-      setClickedIndex(null); // Reset the state after animation
-    }, 300); // Time should match the duration of animation
-  };
+// SpeakerCard component for rendering individual committee members
+const SpeakerCard = ({ members }) => {
+  // Fallback image if the image URL is not valid or missing
+  const fallbackImage = "/comittee/default-placeholder.png";
 
   return (
-    
-      <div
-        className="p-5 lg:px-32 min-h-[300px] flex items-center justify-center min-h-screen"
-        style={{
-          backgroundImage:
-            'url("/companyLogo/gradient.png"), linear-gradient(to right, #5BA353, #FFCC33, #3F6D2A)',
-          backgroundSize: "cover",
-          backgroundBlendMode: "overlay",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="container mx-auto py-8 px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Our Committee Members</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {committeeMembers.map((member, index) => (
-              <div
-                key={index}
-                className={`bg-white shadow-lg rounded-lg overflow-hidden p-4 border-t-8 border-[#2e8220] 
-                transition-transform transform-gpu 
-                ${clickedIndex === index ? "scale-105" : "hover:scale-105"} 
-                hover:shadow-2xl hover:shadow-black hover:translate-y-2 
-                cursor-pointer 
-                ${clickedIndex === index ? "animate-bounce" : ""}`}
-                onClick={() => handleCardClick(index)}
-              >
-                <div className="flex items-center">
-                  {/* Profile Image on the Left Side */}
-                  <div className="w-1/4 flex-shrink-0 -mt-8">
-                    <Image
-                      className="w-24 h-24 rounded-full object-cover mb-4 border-4 border-white shadow-md border-4 border-[#2e8220] "
-                      src={person1}
-                      alt={member.name}
-                    />
-                  </div>
+    <div className="rounded-lg overflow-hidden shadow-2xl transition-all duration-300 hover:shadow-lg flex flex-col items-center justify-center p-6 relative bg-gradient-to-b from-orange-400 to-green-900">
+      {/* Speaker Image Section */}
+      <div className="relative h-24 w-24 mb-2 rounded-full border-4 border-white">
+        <Image
+          src={members.imageUrl || fallbackImage} // Use fallback if image is not provided
+          alt={members.name}
+          layout="fill"
+          objectFit="cover"
+          className="rounded-full"
+        />
+      </div>
 
-                  {/* Member Details on the Right Side */}
-                  <div className="w-3/4 pl-4">
-                    <h3 className="text-xl font-bold text-[#000957]">{member.name}</h3>
-                    <p className="text-black font-bold text-md">{member.role}</p>
-                    <p className="text-gray-500 text-sm mt-2">{member.description}</p>
-                  </div>
-                </div>
-               
-              </div>
-            ))}
-          </div>
+      {/* Speaker Info Section */}
+      <div className="text-center">
+        <h3 className="font-bold text-lg text-white">{members.name}</h3>
+        <p className="text-sm text-yellow-300">{members.role}</p>
+      </div>
+    </div>
+  );
+};
+
+// Main component rendering the committee members
+const CommitteePage = () => {
+  return (
+    <div className="bg-gray-200 min-h-screen py-8">
+      <div className="container mx-auto px-6">
+        <h1 className="text-center text-2xl font-bold mb-6">
+          Committee Members
+        </h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-6">
+          {committeeMembers.map((members, index) => (
+            <SpeakerCard key={index} members={members} />
+          ))}
         </div>
       </div>
-  
+    </div>
   );
 };
 

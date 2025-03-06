@@ -25,6 +25,7 @@ import Certifications from "./Certification";
 import Management from "./Management";
 import Clients from "./Clients";
 import ClientProduct from "./ClientProducts";
+import ClientContactUs from "./ClientContactUs";
 
 // Define smoothScroll function
 const smoothScroll = (id) => {
@@ -202,13 +203,7 @@ const CompanyDetails = ({ company }) => {
             id="contact"
             className="bg-white p-4 md:p-6 rounded-lg shadow-md"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-[#2c3e50]">
-              Contact Us
-            </h2>
-            <p className="mt-4">
-              Feel free to get in touch with us at{" "}
-              {company?.address || "our office"}.
-            </p>
+            <ClientContactUs/>
           </section>
         </div>
 

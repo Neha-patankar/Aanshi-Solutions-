@@ -58,49 +58,61 @@ const Navbar = () => {
             <div className="hidden md:flex justify-center items-center h-12 font-bold">
               <Link
                 href="/"
-                className="text-white px-4 hover:bg-red-500 h-full flex items-center"
+                className="text-white px-4 hover:bg-white  hover:text-black h-full flex items-center"
               >
                 Home
               </Link>
               <Link
                 href="/pagecommit"
-                className="text-white px-4 hover:bg-red-500 h-full flex items-center"
+                className="text-white px-4 hover:bg-white  hover:text-black  h-full flex items-center"
               >
                 Committee
               </Link>
               <Link
                 href="/association"
-                className="text-white px-4 hover:bg-red-500 h-full flex items-center"
+                className="text-white px-4 hover:bg-white  hover:text-black  h-full flex items-center"
               >
                 Our Associates
               </Link>
               <Link
                 href="/aboutus"
-                className="text-white px-4 hover:bg-red-500 h-full flex items-center"
+                className="text-white px-4 hover:bg-white  hover:text-black  h-full flex items-center"
               >
                 About Us
               </Link>
               <Link
                 href="/product"
-                className="text-white px-4 hover:bg-red-500 h-full flex items-center"
+                className="text-white px-4 hover:bg-white  hover:text-black  h-full flex items-center"
               >
                 Products
               </Link>
               <Link
                 href="/member"
-                className="text-white px-4 hover:bg-red-500 h-full flex items-center"
+                className="text-white px-4 hover:bg-white  hover:text-black  h-full flex items-center"
               >
                 Members
               </Link>
               <Link
+                href="/classified"
+                className="text-white px-4 hover:bg-white  hover:text-black  h-full flex items-center"
+              >
+                Classified
+              </Link>
+                <Link
+                href="/supplier"
+                className="text-white px-4 hover:bg-white  hover:text-black  h-full flex items-center"
+              >
+                Supplier Directory
+              </Link>
+              <Link
                 href="/contactus"
-                className="text-white px-4 hover:bg-red-500 h-full flex items-center"
+                className="text-white px-4 hover:bg-white  hover:text-black  h-full flex items-center"
               >
                 Contact Us
               </Link>
               <button
                 onClick={() => setIsLoginModalOpen(true)}
-                className="text-white px-4 hover:bg-red-500 h-full flex items-center"
+                className="text-white px-4 hover:bg-white  hover:text-black  h-full flex items-center"
               >
                 Login
               </button>
@@ -113,49 +125,61 @@ const Navbar = () => {
               <div className="px-2 pt-2 pb-3 space-y-1">
                 <Link
                   href="/"
-                  className="text-white block px-3 py-2 hover:bg-red-500"
+                  className="text-white block px-3 py-2 hover:bg-white  hover:text-black "
                 >
                   Home
                 </Link>
                 <Link
                   href="/aboutus"
-                  className="text-white block px-3 py-2 hover:bg-red-500"
+                  className="text-white block px-3 py-2 hover:bg-white  hover:text-black "
                 >
                   About Us
                 </Link>
                 <Link
                   href="/pagecommit"
-                  className="text-white block px-3 py-2 hover:bg-red-500"
+                  className="text-white block px-3 py-2 hover:bg-white  hover:text-black "
                 >
                   Committee
                 </Link>
                 <Link
                   href="/product"
-                  className="text-white block px-3 py-2 hover:bg-red-500"
+                  className="text-white block px-3 py-2 hover:bg-white  hover:text-black "
                 >
                   Products
                 </Link>
                 <Link
                   href="/member"
-                  className="text-white block px-3 py-2 hover:bg-red-500"
+                  className="text-white block px-3 py-2 hover:bg-white  hover:text-black "
                 >
                   Members
                 </Link>
                 <Link
                   href="/association"
-                  className="text-white block px-3 py-2 hover:bg-red-500"
+                  className="text-white block px-3 py-2 hover:bg-white  hover:text-black "
                 >
                   Our Associates
                 </Link>
                 <Link
+                href="/classified"
+                className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-white hover:text-black transition-colors"
+              >
+                Classified
+              </Link>
+                <Link
+                 href="/supplier"
+                className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-white hover:text-black transition-colors"
+              >
+                Supplier Directory
+              </Link>
+                <Link
                   href="/contactus"
-                  className="text-white block px-3 py-2 hover:bg-red-500"
+                  className="text-white block px-3 py-2 hover:bg-white  hover:text-black "
                 >
                   Contact Us
                 </Link>
                 <button
                   onClick={() => setIsLoginModalOpen(true)}
-                  className="text-white block px-3 py-2 hover:bg-red-500 w-full text-left"
+                  className="text-white block px-3 py-2 hover:bg-white  hover:text-black  w-full text-left"
                 >
                   Login
                 </button>

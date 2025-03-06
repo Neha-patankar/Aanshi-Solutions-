@@ -1,11 +1,11 @@
 export const currentData = [
   {
     id: 1,
-    company: "MARK GLAZE TILES PVT LTD",
+    company: "Jivitha Ayurveda",
     contact: "Gopal Lakhmanbhai Moradiya",
     address: "Survey No: 565 & 566 Old Ghuntu Road Morbi - 363642",
     product: "Ceramic Tiles",
-    area: "Bhopal",
+    area: "Indore",
     imageLogo: "/companyLogo/logo1.png",
   },
   {

@@ -1,30 +1,31 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { products } from "../../Product/data";
+import { products } from "../../Product/data"; // Import products from data.js
 
 const ClientProduct = () => {
   const [isClient, setIsClient] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("All Products");
+  const [selectedCategory, setSelectedCategory] = useState("All Product");
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   const categories = [
-    { name: "All Products", image: "/productsPage/product/allproducts.png" },
-    { name: "Ayurvedic Oils", image: "/productsPage/product/ayurvedicoils.png" },
-    { name: "Capsule", image: "/productsPage/product/capsule.png" },
-    { name: "Gel Balm", image: "/productsPage/product/gelbalm.png" },
-    { name: "Hair Oil", image: "/productsPage/product/hairoil.png" },
-    { name: "Herbal", image: "/productsPage/product/herbal.png" },
-    { name: "Syrup", image: "/productsPage/product/syrup.png" },
+    { name: "All Product" },
+    { name: "adivasioil", image: "/final jivitha pics/adivasioil.png" },
+    { name: "allergyoil", image: "/final jivitha pics/allergy-removebg-preview.png" },
+    { name: "applecider", image: "/final jivitha pics/applecider.png" },
+    { name: "fatcure", image: "/final jivitha pics/fatcure.png" },
+    { name: "gutne", image: "/final jivitha pics/ghutne.png" },
+    { name: "mushroom", image: "/final jivitha pics/mushroonpowder.png" },
+    { name: "proteeplus", image: "/final jivitha pics/proteeplus.png" },
+    { name: "SugerKipakki", image: "/final jivitha pics/sugarkipakki.png" },
   ];
 
   const filteredProducts = products.filter(
     (product) =>
-      selectedCategory === "All Products" ||
-      product.category === selectedCategory
+      selectedCategory === "All Product" || product.category === selectedCategory
   );
 
   const handleCategoryClick = (categoryName) => {
@@ -36,7 +37,7 @@ const ClientProduct = () => {
   }
 
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen">
       {/* Top Section - Categories */}
       <div className="p-4">
         <h2 className="text-xl font-bold mb-4 text-center">Product</h2>
@@ -53,14 +54,16 @@ const ClientProduct = () => {
                   : "hover:scale-105 hover:bg-gray-50 hover:rounded-lg"
               }`}
             >
-              <div className="relative h-16 w-16 md:h-20 md:w-20 rounded-lg overflow-hidden">
-                <Image
-                  src={category.image}
-                  alt={category.name}
-                  fill
-                  className="object-contain p-2"
-                />
-              </div>
+              {category.image && (
+                <div className="relative h-16 w-16 md:h-20 md:w-20 rounded-lg overflow-hidden">
+                  <Image
+                    src={category.image}
+                    alt={category.name}
+                    fill
+                    className="object-contain p-2"
+                  />
+                </div>
+              )}
               {/* Category name */}
               <p className="mt-2 text-center font-bold text-sm">{category.name}</p>
             </div>
@@ -73,9 +76,7 @@ const ClientProduct = () => {
         {/* No Results Message */}
         {filteredProducts.length === 0 ? (
           <div className="text-center py-8">
-            <p className="text-gray-600 text-lg">
-              No products found in this category.
-            </p>
+            <p className="text-gray-600 text-lg">No products found in this category.</p>
           </div>
         ) : (
           /* Product Grid */
@@ -89,7 +90,7 @@ const ClientProduct = () => {
                 <div className="relative h-48 sm:h-56 w-full">
                   <Image
                     src={product.image}
-                    alt={product.englishName}
+                    alt={product.name}
                     fill
                     className="object-contain p-4"
                     priority={index < 4}

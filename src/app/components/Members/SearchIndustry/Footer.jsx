@@ -42,17 +42,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="flex flex-col items-start text-left">
-            <h3 className="text-x2l font-bold mb-4 text-white ">Quick Links</h3>
-            <div className="space-y-2 ">
-              {/* <Link href="/pagecommit" className="block hover:text-red-400">Committee</Link> */}
-              <Link href="/aboutus" className="block hover:text-red-500">About Us</Link>
-              <Link href="/product" className="block hover:text-red-500">Products</Link>
-              <Link href="/member" className="block hover:text-red-500">Members</Link>
-              <Link href="/contactus" className="block hover:text-red-500">Contact Us</Link>
-            </div>
-          </div>
+         
         </div>
 
         {/* Copyright Section */}

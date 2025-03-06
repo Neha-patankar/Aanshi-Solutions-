@@ -28,9 +28,10 @@ const Counter = ({ end, duration = 2000 }) => {
 
 const StatsSection = () => {
   const stats = [
-    { number: 1000, label: "Pharma Companies" },
-    { number: 2000, label: "Medical Products" },
-    { number: 1000, label: "Job Works Done" }
+    { number: 1500, label: "कुल आयुष निर्माता" },
+    { number: 20000, label: "कुल आयुष उत्पाद" },
+    { number: 25, label: "कुल उत्पाद श्रेणियाँ" }
+    
   ];
 
   return (
@@ -54,10 +55,10 @@ const StatsSection = () => {
               className="rounded-xl shadow-lg p-8 transform hover:scale-105 transition-transform duration-300"
             >
               <div className="flex flex-col items-center">
-                <h2 className="text-5xl font-bold text-blue-950 mb-3">
+                <h2 className="text-6xl font-bold text-green-950 mb-3">
                   <Counter end={stat.number} />
                 </h2>
-                <p className="text-gray-700 text-lg font-medium">
+                <p className="text-white text-2xl font-bold ">
                   {stat.label}
                 </p>
               </div>

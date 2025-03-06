@@ -6,12 +6,14 @@ import StatsSection from '../components/Landingpage/StateSection';
 import RecentActivitiesSlider from '../components/Landingpage/RecentActivitiesSlider';
 import RecentNewsSlider from '../components/Landingpage/RecentNewsSlider';
 import Footer from '../components/Footer/Footer';
+import ThreeColumnLayout from '../components/Landingpage/ThreeColumnLayout';
 
 const Landingpage = () => {
   return (
     <div>
       <Navbar />
-      <SliderScroller />
+      <ThreeColumnLayout/>
+      {/* <SliderScroller /> */}
       <VisionMission />
       <StatsSection/>
       

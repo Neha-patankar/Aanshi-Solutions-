@@ -70,7 +70,7 @@ const SearchIndustry = () => {
     <div className="p-4">
       <div className="flex-col md:flex-row rounded-lg shadow-lg mb-8 gap-4">
         <div className="bg-[#344742] rounded-t-md">
-          <h4 className="font-semibold text-lg text-white text-center font-bold p-1">
+          <h4 className="text-lg text-white text-center font-bold p-1">
             TOTAL COMPANIES : {filteredData.length}
           </h4>
         </div>

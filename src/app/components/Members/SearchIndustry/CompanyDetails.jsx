@@ -176,7 +176,8 @@ const CompanyDetails = ({ company }) => {
         {/* Main Content */}
         <div className="p-4 md:p-5 space-y-8 md:space-y-16 bg-[#f0f2f5]">
           <section id="home" className="">
-            <HomeCardSlider />
+            <HomeCardSlider company={company}  />
+           
           </section>
 
           <section id="management" className="">
@@ -196,14 +197,14 @@ const CompanyDetails = ({ company }) => {
           </section>
 
           <section id="product" className="">
-            <ClientProduct />
+            <ClientProduct company={company} />
           </section>
 
           <section
             id="contact"
-            className="bg-white p-4 md:p-6 rounded-lg shadow-md"
+            className=" "
           >
-            <ClientContactUs/>
+            <ClientContactUs company={company} />
           </section>
         </div>
 

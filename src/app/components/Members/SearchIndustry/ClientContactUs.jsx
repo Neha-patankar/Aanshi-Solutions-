@@ -1,35 +1,6 @@
 import React, { useState } from "react";
 
 const ClientContactUs = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "general",
-    message: "",
-  });
-
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [id]: value,
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message. We will get back to you soon!");
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "general",
-      message: "",
-    });
-  };
-
   return (
     <div className="">
       {/* Main Content */}
@@ -89,7 +60,7 @@ const ClientContactUs = () => {
           </div>
 
           {/* Map Image (Right Side) */}
-          <div className="md:w-1/2 bg-gray-200 rounded-lg overflow-hidden">
+          <div className="md:w-1/2  rounded-lg overflow-hidden">
             <img
               src="/jivita.png"
               alt="Map to Jivitha Ayurveda location"

@@ -168,7 +168,7 @@ const CompanyDetails = ({ company }) => {
             height={100}
             className=""
           />
-          <h1 className="text-3xl md:text-4xl font-bold mt-4 text-white">
+          <h1 className="text-2xl  md:text-4xl font-bold mt-4 text-white " >
             {company?.company || "Our Company"}
           </h1>
         </header>

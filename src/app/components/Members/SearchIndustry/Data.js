@@ -1,7 +1,7 @@
 export const currentData = [
   {
     id: 1,
-    company: "Jivitha Ayurveda",
+    company: "JIVITHA AYURVEDA",
     contact: "Manager",
     address: "Office No.11, 5th floor dawa bazar, INDORE (M.P) 452001",
     cards: [
@@ -15,7 +15,7 @@ export const currentData = [
       { name: "SugerKipakki", image: "/final jivitha pics/sugarkipakki.png" },
     ],
     area: "Indore",
-    imageLogo: "/companyLogo/logo1.png",
+    imageLogo: "/companyLogo/jivithalogo.png",
     licenseNo: "MP/25D/10/111",
     validUpto: "14/06/2023",
   },

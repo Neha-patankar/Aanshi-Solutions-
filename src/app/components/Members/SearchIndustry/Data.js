@@ -6,7 +6,7 @@ export const currentData = [
     address: "Office No.11, 5th floor dawa bazar, INDORE (M.P) 452001",
     cards: [
       { name: "adivasioil", image: "/final jivitha pics/adivasioil.png" },
-      { name: "allergyoil", image: "/final jivitha pics/allergy-removebg-preview.png" },
+      { name: "allergyoil", image: "/final jivitha pics/allergy.png" },
       { name: "applecider", image: "/final jivitha pics/applecider.png" },
       { name: "fatcure", image: "/final jivitha pics/fatcure.png" },
       { name: "gutne", image: "/final jivitha pics/ghutne.png" },

@@ -3,13 +3,13 @@ export const committeeMembers = [
     id: 1,
     name: "श्री राजेश सेठिया",
     role: "अध्यक्ष",
-    imageUrl: "/comittee/rajeshSethia.png"
+    imageUrl: "/comittee/rajeshsethiya.png"
   },
   {
     id: 2,
     name: "अजय दासोंधी",
     role: "उपाध्यक्ष",
-    imageUrl: "/comittee/ajay.png"
+    imageUrl: "/comittee/ajays.png"
   },
   {
     id: 3,

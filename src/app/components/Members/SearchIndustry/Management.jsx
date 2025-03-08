@@ -6,7 +6,7 @@ const Management = ({ company }) => {
     {
       name: 'Mr. Rajesh Sethia',
       role: 'President',
-      imageUrl: '/comittee/rajeshSethia.png',
+      imageUrl: '/comittee/rajeshsethiya.png',
       description:
         'Leads the overall vision, strategy, and direction of the organization, ensuring alignment with its mission and values. Drives long-term goals and strategic initiatives while maintaining oversight of key partnerships and growth opportunities.',
     },
@@ -20,7 +20,7 @@ const Management = ({ company }) => {
     {
       name: 'Disha Sethia',
       role: 'Legal Adviser',
-      imageUrl: '/comittee/dishasethia.png',
+      imageUrl: '/comittee/dishasethiya.png',
       description:
         'Provides expert legal counsel to the organization, ensuring compliance with laws and regulations. Disha focuses on protecting the company\'s legal interests and supporting strategic decision-making with sound legal advice.',
     },

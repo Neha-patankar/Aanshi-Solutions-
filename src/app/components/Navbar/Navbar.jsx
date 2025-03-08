@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white  shadow-md">
+      <div className="fixed top-0 left-0 right-0 z-50 shadow-md bg-gradient-to-r from-[#fefffc] to-[#eff5e7]">
         {/* Top Navigation Bar */}
         <nav className="w-full">
           <div className="container flex items-center justify-center mx-auto px-4">
@@ -69,6 +69,12 @@ const Navbar = () => {
                 Committee
               </Link>
               <Link
+                href="/classified"
+                className="text-white block px-3 py-2 hover:bg-white  hover:text-black "
+              >
+                Classified
+              </Link>
+              <Link
                 href="/association"
                 className="text-white px-4 hover:bg-white  hover:text-black  h-full flex items-center"
               >
@@ -92,12 +98,7 @@ const Navbar = () => {
               >
                 Members
               </Link>
-              <Link
-                href="/classified"
-                className="text-white px-4 hover:bg-white  hover:text-black  h-full flex items-center"
-              >
-                Classified
-              </Link>
+             
                 <Link
                 href="/supplier"
                 className="text-white px-4 hover:bg-white  hover:text-black  h-full flex items-center"
@@ -142,6 +143,12 @@ const Navbar = () => {
                   Committee
                 </Link>
                 <Link
+                href="/classified"
+                className="text-white block px-3 py-2 hover:bg-white  hover:text-black "
+              >
+                Classified
+              </Link>
+                <Link
                   href="/product"
                   className="text-white block px-3 py-2 hover:bg-white  hover:text-black "
                 >
@@ -159,15 +166,10 @@ const Navbar = () => {
                 >
                   Our Associates
                 </Link>
-                <Link
-                href="/classified"
-                className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-white hover:text-black transition-colors"
-              >
-                Classified
-              </Link>
+               
                 <Link
                  href="/supplier"
-                className="text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-white hover:text-black transition-colors"
+                className="text-white block px-3 py-2 hover:bg-white  hover:text-black "
               >
                 Supplier Directory
               </Link>

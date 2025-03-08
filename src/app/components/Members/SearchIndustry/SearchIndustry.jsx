@@ -13,7 +13,7 @@ const SearchIndustry = () => {
   const [filteredData, setFilteredData] = useState(currentData);
   const [locationCounts, setLocationCounts] = useState({});
 
-  const ITEMS_PER_PAGE = 10;
+  const ITEMS_PER_PAGE = 15;
 
   useEffect(() => {
     handleSearch();
@@ -68,7 +68,7 @@ const SearchIndustry = () => {
 
   return (
     <div className="p-4">
-      <div className="flex-col md:flex-row rounded-lg shadow-lg mb-8 gap-4">
+      {/* <div className="flex-col md:flex-row rounded-lg shadow-lg mb-8 gap-4">
         <div className="bg-[#344742] rounded-t-md">
           <h4 className="text-lg text-white text-center font-bold p-1">
             TOTAL COMPANIES : {filteredData.length}
@@ -88,11 +88,11 @@ const SearchIndustry = () => {
             ))}
           </ul>
         </div>
-      </div>
+      </div> */}
 
       <div className="bg-white rounded-xl shadow-lg p-0 mb-8 border-t-4 border-[#344742] ">
         <div className="bg-[#344742] rounded-t-md pt-2"></div>
-        <div className="flex flex-col md:flex-row items-center gap-4 p-10">
+        <div className="flex flex-col md:flex-row items-center gap-4 p-4">
           <DebounceInput
             minLength={2}
             debounceTimeout={300}

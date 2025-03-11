@@ -57,7 +57,7 @@ const ThreeColumnLayout = () => {
       {/* Left side - Recent News */}
       <div className="w-full lg:w-1/4 bg-yellow-700 rounded-lg p-4">
         <div className="bg-white rounded-md p-3 mb-4">
-          <h2 className="text-xl font-bold text-green-700 text-center">Recent Activity</h2>
+          <h2 className="text-xl font-bold text-green-700 text-center">Aayush New </h2>
         </div>
         <div className="space-y-2">
           {recentNews.map((news) => (

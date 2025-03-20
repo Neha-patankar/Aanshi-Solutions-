@@ -9,6 +9,7 @@ export const products = [
     offerPrice: 245,
     image: "/final jivitha pics/adivasioil.png",
     category: "adivasioil",
+    company: "Jivitha"
   },
 
   {
@@ -20,6 +21,7 @@ export const products = [
     offerPrice: 245,
     image: "/final jivitha pics/allergy.png",
     category: "allergyoil",
+    company: "Jivitha"
   },
 
   // Apple Cider Products
@@ -32,6 +34,7 @@ export const products = [
     offerPrice: 280,
     image: "/final jivitha pics/applecider.png",
     category: "applecider",
+    company: "Jivitha"
   },
 
   // Fat Cure Products
@@ -44,6 +47,7 @@ export const products = [
     offerPrice: 399,
     image: "/final jivitha pics/fatcure.png",
     category: "fatcure",
+    company: "Jivitha"
   },
 
   // Knee Relief Products
@@ -56,6 +60,7 @@ export const products = [
     offerPrice: 220,
     image: "/final jivitha pics/ghutne.png",
     category: "gutne",
+    company: "Jivitha"
   },
 
   // Mushroom Products
@@ -68,6 +73,7 @@ export const products = [
     offerPrice: 350,
     image: "/final jivitha pics/mushroonpowder.png",
     category: "mushroom",
+    company: "Jivitha"
   },
 
   // Proti Plus Products
@@ -80,6 +86,7 @@ export const products = [
     offerPrice: 505,
     image: "/final jivitha pics/proteeplus.png",
     category: "proteeplus",
+    company: "Jivitha"
   },
 
   // Sugar Fakki Products
@@ -92,5 +99,6 @@ export const products = [
     offerPrice: 160,
     image: "/final jivitha pics/sugarkipakki.png",
     category: "SugerKipakki",
+    company: "Jivitha"
   }
 ];

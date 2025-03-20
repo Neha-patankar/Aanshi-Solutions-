@@ -12,19 +12,17 @@ const Product = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
-
+  
   const categories = [
-    { name: "All Products", image: "/productsPage/product/allproducts.png" },
-    { name: "Ayurvedic Oils", image: "/productsPage/product/ayurvedicoils.png" },
-    { name: "Capsule", image: "/productsPage/product/capsule.png" },
-    { name: "Gel Balm", image: "/productsPage/product/gelbalm.png" },
-    { name: "Hair Oil", image: "/productsPage/product/hairoil.png" },
-    { name: "Herbal", image: "/productsPage/product/herbal.png" },
-    { name: "Syrup", image: "/productsPage/product/syrup.png" },
+    { name: "All Products" },
+    { name: "Ayurvedic Oils" },
+    { name: "Capsule"},
+    { name: "Gel Balm" },
+    { name: "Hair Oil" },
+    { name: "Herbal"},
+    { name: "Syrup" },
   ];
   
-  
-
   const filteredProducts = products.filter((product) => {
     const matchesSearch = product.englishName
       .toLowerCase()
@@ -46,37 +44,30 @@ const Product = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="flex flex-col md:flex-row">
-        {/* Sidebar - Always visible */}
-       <div className="w-full md:w-20 lg:w-32  shadow-2xl h-screen ">
-    <div className="p-4">
-    <h2 className="text-xl font-bold mb-4 text-white text-center md:text-left">Categories</h2>
+        {/* Enhanced Sidebar with Button Design */}
+        <div className=" md:w-40 bg-white shadow-xl h-screen">
+          <div className="p-4">
+            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 border-b pb-2">Categories</h2>
 
-    {/* Category List */}
-    <div className="grid grid-cols-3 md:grid-cols-1 gap-3">
-      {categories.map((category) => (
-        <div
-          key={category.name}
-          onClick={() => handleCategoryClick(category.name)}
-          className={`cursor-pointer transition-all flex flex-col items-center md:items-center ${
-            selectedCategory === category.name
-              ? "scale-105 shadow-lg bg-blue-50 rounded-lg"
-              : "hover:scale-105 hover:bg-gray-50 hover:rounded-lg"
-          }`}
-        >
-          <div className="relative h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 rounded-lg overflow-hidden">
-            <Image
-              src={category.image}
-              alt={category.name}
-              fill
-              className="object-contain p-1"
-            />
+            {/* Category List - Button Style */}
+            <div className="flex flex-col space-y-4">
+              {categories.map((category) => (
+                <button
+                  key={category.name}
+                  onClick={() => handleCategoryClick(category.name)}
+                  className={`py-4 px-4 rounded-lg transition-all duration-300 font-medium text-left flex items-center
+                    ${
+                      selectedCategory === category.name
+                      ? "bg-[#344742] text-white shadow-lg transform scale-105"
+                      : "bg-green-100 text-[#344742] hover:bg-green-200 hover:shadow-md"
+                    }`}
+                >
+                  <span className="ml-2">{category.name}</span>
+                </button>
+              ))}
+            </div>
           </div>
-          {/* Category name is commented out as per your example */}
         </div>
-      ))}
-    </div>
-  </div>
-</div>
         
         {/* Main Content */}
         <div className="flex-1 p-4 md:p-6 lg:p-8">
@@ -124,14 +115,15 @@ const Product = () => {
                   {/* Product Details */}
                   <div className="p-4">
                     <h3 className="text-lg font-bold mb-2">{product.name}</h3>
+                    <h3 className="text-md font-bold text-green-700 mb-2">Company: {product.company}</h3>
                     <div className="space-y-1">
-                      <p className="text-gray-600">SIZE : {product.size}</p>
-                      <p className="text-gray-600">MRP : ₹ {product.mrp}</p>
+                      <p className="text-gray-600">SIZE: {product.size}</p>
+                      <p className="text-gray-600">MRP: ₹ {product.mrp}</p>
                       <p className="text-green-700 font-semibold">
                         Offer Price: ₹ {product.offerPrice}
                       </p>
                     </div>
-                    <button className="w-full mt-4 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">
+                    <button className="w-full mt-4 bg-[#344742] text-white py-2 rounded-md hover:bg-[#639385] transition-colors">
                       Buy Now
                     </button>
                   </div>

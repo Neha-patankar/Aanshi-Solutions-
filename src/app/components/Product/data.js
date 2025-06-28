@@ -379,7 +379,7 @@ export const products = [
     size: "50 gm",
     mrp: 210,
     offerPrice: 185,
-    image: "/productsPage/product/gel.png",
+    image: "/productsPage/product/gelbalm.png",
     category: "gelbalm",
     company: "ANUJ HERBALS PRODUCTS"
   },
@@ -447,7 +447,7 @@ export const products = [
     size: "50 gm",
     mrp: 190,
     offerPrice: 165,
-    image: "/productsPage/product/gel.png",
+    image: "/productsPage/product/gelbalm.png",
     category: "gelbalm",
     company: "HERBAL LIFE SCIENCES"
   },
@@ -493,7 +493,7 @@ export const products = [
     size: "50 gm",
     mrp: 220,
     offerPrice: 190,
-    image: "/productsPage/product/gel.png",
+    image: "/productsPage/product/gelbalm.png",
     category: "gelbalm",
     company: "PANCHTATVA AYURVEDA"
   },
@@ -539,7 +539,7 @@ export const products = [
     size: "50 gm",
     mrp: 240,
     offerPrice: 210,
-    image: "/productsPage/product/gel.png",
+    image: "/productsPage/product/gelbalm.png",
     category: "gelbalm",
     company: "SANSKRUTI AYURVEDIC CARE"
   },

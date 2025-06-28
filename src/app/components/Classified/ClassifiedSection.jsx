@@ -10,7 +10,7 @@ export const classifieds = [
     location: "Indore, MP",
     contact: "9876543210",
     category: "Business Opportunity",
-    image: "/clasified/clasific1.png",
+    image: "/clasified/distributors.png",
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ export const classifieds = [
     location: "Jabalpur, MP",
     contact: "9345012345",
     category: "Job Vacancy",
-    image: "/clasified/clasific1.png",
+    image: "/clasified/panchkarma.png",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ export const classifieds = [
     location: "Neemuch, MP",
     contact: "9823011122",
     category: "Supply",
-    image: "/clasified/clasific1.png",
+    image: "/clasified/raw.png",
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ export const classifieds = [
     location: "Available All India",
     contact: "9876003211",
     category: "Service",
-    image: "/clasified/clasific1.png",
+    image: "/clasified/online.png",
   },
   {
     id: 6,
@@ -55,7 +55,7 @@ export const classifieds = [
     location: "All Over India",
     contact: "9611112345",
     category: "Franchise",
-    image: "/clasified/clasific1.png"
+    image: "/clasified/frelancer.png"
   }
 ];
 

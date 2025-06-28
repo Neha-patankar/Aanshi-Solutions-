@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Search } from "lucide-react";
-import { products } from "./data";
+import { products } from "./data"; // make sure this file contains the updated product list
 
 const Product = () => {
   const [isClient, setIsClient] = useState(false);
@@ -12,24 +12,38 @@ const Product = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
-  
+
   const categories = [
     { name: "All Products" },
     { name: "Ayurvedic Oils" },
-    { name: "Capsule"},
+    { name: "Capsule" },
     { name: "Gel Balm" },
     { name: "Hair Oil" },
-    { name: "Herbal"},
+    { name: "Herbal" },
     { name: "Syrup" },
   ];
-  
+
+  // Map UI category names to product.category values
+  const categoryMap = {
+    "All Products": "all",
+    "Ayurvedic Oils": "oil",
+    "Capsule": "capsule",
+    "Gel Balm": "gelbalm",
+    "Hair Oil": "hairoil",
+    "Herbal": "tablet",
+    "Syrup": "syrup",
+  };
+
   const filteredProducts = products.filter((product) => {
     const matchesSearch = product.englishName
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
+
+    const selectedKey = categoryMap[selectedCategory];
+
     const matchesCategory =
-      selectedCategory === "All Products" ||
-      product.category === selectedCategory;
+      selectedKey === "all" || product.category === selectedKey;
+
     return matchesSearch && matchesCategory;
   });
 
@@ -37,19 +51,18 @@ const Product = () => {
     setSelectedCategory(categoryName);
   };
 
-  if (!isClient) {
-    return null;
-  }
+  if (!isClient) return null;
 
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="flex flex-col md:flex-row">
-        {/* Enhanced Sidebar with Button Design */}
-        <div className=" md:w-40 bg-white shadow-xl h-screen">
+        {/* Sidebar */}
+        <div className="md:w-40 bg-white shadow-xl h-screen">
           <div className="p-4">
-            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 border-b pb-2">Categories</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 border-b pb-2">
+              Categories
+            </h2>
 
-            {/* Category List - Button Style */}
             <div className="flex flex-col space-y-4">
               {categories.map((category) => (
                 <button
@@ -58,8 +71,8 @@ const Product = () => {
                   className={`py-4 px-4 rounded-lg transition-all duration-300 font-medium text-left flex items-center
                     ${
                       selectedCategory === category.name
-                      ? "bg-[#344742] text-white shadow-lg transform scale-105"
-                      : "bg-green-100 text-[#344742] hover:bg-green-200 hover:shadow-md"
+                        ? "bg-[#344742] text-white shadow-lg transform scale-105"
+                        : "bg-green-100 text-[#344742] hover:bg-green-200 hover:shadow-md"
                     }`}
                 >
                   <span className="ml-2">{category.name}</span>
@@ -68,7 +81,7 @@ const Product = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Main Content */}
         <div className="flex-1 p-4 md:p-6 lg:p-8">
           {/* Search Bar */}
@@ -85,7 +98,7 @@ const Product = () => {
             </div>
           </div>
 
-          {/* No Results Message */}
+          {/* No Results */}
           {filteredProducts.length === 0 ? (
             <div className="text-center py-8">
               <p className="text-gray-600 text-lg">
@@ -94,7 +107,7 @@ const Product = () => {
               </p>
             </div>
           ) : (
-            /* Product Grid */
+            // Product Grid
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
               {filteredProducts.map((product, index) => (
                 <div
@@ -112,12 +125,14 @@ const Product = () => {
                     />
                   </div>
 
-                  {/* Product Details */}
+                  {/* Product Info */}
                   <div className="p-4">
-                    <h3 className="text-lg font-bold mb-2">{product.name}</h3>
-                    <h3 className="text-md font-bold text-green-700 mb-2">Company: {product.company}</h3>
+                    <h3 className="text-lg font-bold mb-1">{product.name}</h3>
+                    <h4 className="text-sm font-semibold text-green-700 mb-2">
+                      Company: {product.company}
+                    </h4>
                     <div className="space-y-1">
-                      <p className="text-gray-600">SIZE: {product.size}</p>
+                      <p className="text-gray-600">Size: {product.size}</p>
                       <p className="text-gray-600">MRP: ₹ {product.mrp}</p>
                       <p className="text-green-700 font-semibold">
                         Offer Price: ₹ {product.offerPrice}

@@ -1,14 +1,15 @@
 import React from 'react'
-import Classified from '../components/Classified/Classified';
+
 import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
+import ClassifiedSection from '../components/Classified/ClassifiedSection';
 
 const page = () => {
   return (
     <div>
       
        <Navbar/>
-       <Classified/>
+       <ClassifiedSection/>
       <Footer/>
     </div>
   )

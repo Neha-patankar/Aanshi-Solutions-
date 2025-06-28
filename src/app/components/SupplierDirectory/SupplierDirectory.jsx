@@ -1,8 +1,11 @@
 import React from 'react'
+import Members from '../Members/Members/Members';
 
 const SupplierDirectory = () => {
   return (
-    <div>SupplierDirectory</div>
+    <div>
+      <Members/>
+    </div>
   )
 }
 export  default SupplierDirectory ;
